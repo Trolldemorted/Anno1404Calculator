@@ -100,8 +100,7 @@ namespace Anno1404Calculator.Views
 
         private void TextBox_BeforeTextChanging(TextBox _, TextBoxBeforeTextChangingEventArgs args)
         {
-            args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
-            Debug.WriteLine($"Cancel={args.Cancel}");
+            args.Cancel = args.NewText.Any(c => !char.IsDigit(c)) && args.NewText != string.Empty;
         }
 
         private void UpdateEverything()
