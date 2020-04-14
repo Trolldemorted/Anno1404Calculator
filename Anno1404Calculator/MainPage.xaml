@@ -1,0 +1,72 @@
+﻿<Page
+    x:Class="Anno1404Calculator.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Anno1404Calculator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shared="using:Anno1404Calculator.Shared" xmlns:views="using:Anno1404Calculator.Views"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="0" HorizontalAlignment="Center">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListBoxItem>
+                <views:CivilizationClass CivClassName="Beggars" Amount="{x:Bind Model.Beggars, Mode=OneWay}"></views:CivilizationClass>
+            </ListBoxItem>
+            <ListBoxItem>
+                <views:CivilizationClass CivClassName="Peasants" Amount="{x:Bind Model.Peasants, Mode=OneWay}"></views:CivilizationClass>
+            </ListBoxItem>
+            <ListBoxItem>
+                <views:CivilizationClass CivClassName="Citizens" Amount="{x:Bind Model.Citizens, Mode=OneWay}"></views:CivilizationClass>
+            </ListBoxItem>
+            <ListBoxItem>
+                <views:CivilizationClass CivClassName="Patricians" Amount="{x:Bind Model.Patricians, Mode=OneWay}"></views:CivilizationClass>
+            </ListBoxItem>
+            <ListBoxItem>
+                <views:CivilizationClass CivClassName="Noblemen" Amount="{x:Bind Model.Noblemen, Mode=OneWay}"></views:CivilizationClass>
+            </ListBoxItem>
+            <ListBoxItem>
+                <views:CivilizationClass CivClassName="Nomads" Amount="{x:Bind Model.Nomads, Mode=OneWay}"></views:CivilizationClass>
+            </ListBoxItem>
+            <ListBoxItem>
+                <views:CivilizationClass CivClassName="Envoys" Amount="{x:Bind Model.Envoys, Mode=OneWay}"></views:CivilizationClass>
+            </ListBoxItem>
+        </ListView>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <views:Product ProductType="Fish" ProductConsumption="{x:Bind Model.FishConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Cider" ProductConsumption="{x:Bind Model.CiderConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="LinenGarments" ProductConsumption="{x:Bind Model.LinenGarmentsConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Spices" ProductConsumption="{x:Bind Model.SpicesConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Bread" ProductConsumption="{x:Bind Model.BreadConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Beer" ProductConsumption="{x:Bind Model.BeerConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="LeatherJerkins" ProductConsumption="{x:Bind Model.LeatherJerkinsConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Books" ProductConsumption="{x:Bind Model.BooksConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Meat" ProductConsumption="{x:Bind Model.MeatConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="FurCoats" ProductConsumption="{x:Bind Model.FurCoatsConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Wine" ProductConsumption="{x:Bind Model.WineConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Glasses" ProductConsumption="{x:Bind Model.GlassesConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Candlestick" ProductConsumption="{x:Bind Model.CandlestickConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="BrocadeRobes" ProductConsumption="{x:Bind Model.BrocadeRobesConsumption, Mode=OneWay}"></views:Product>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <views:Product ProductType="Dates" ProductConsumption="{x:Bind Model.DatesConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Milk" ProductConsumption="{x:Bind Model.MilkConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Carpets" ProductConsumption="{x:Bind Model.CarpetsConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Coffee" ProductConsumption="{x:Bind Model.CoffeeConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="PearlNecklaces" ProductConsumption="{x:Bind Model.PearlNecklacesConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Perfume" ProductConsumption="{x:Bind Model.PerfumeConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Marzipan" ProductConsumption="{x:Bind Model.MarzipanConsumption, Mode=OneWay}"></views:Product>
+        </StackPanel>
+    </Grid>
+</Page>
