@@ -198,7 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Anno1404Calculator.Shared\Anno1404Calculator.Shared.csproj">
-      <Project>{f8b786ec-3c59-4699-9dab-438b83271e74}</Project>
+      <Project>{15db9e92-16a3-41c2-b8e1-c8e2117b445f}</Project>
       <Name>Anno1404Calculator.Shared</Name>
     </ProjectReference>
   </ItemGroup>

@@ -9,7 +9,7 @@
   <Identity
     Name="51ee5d3f-3fd7-4cf6-9a8d-1b7894b86712"
     Publisher="CN=Benni"
-    Version="1.0.0.0" />
+    Version="0.0.1.0" />
 
   <Properties>
     <DisplayName>Anno1404CalculatorPackage</DisplayName>
