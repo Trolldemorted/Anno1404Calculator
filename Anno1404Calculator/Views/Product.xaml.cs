@@ -106,10 +106,6 @@ namespace Anno1404Calculator.Views
 
         private void UpdateEverything()
         {
-            if (ProductType == Anno1404ProductType.Dates)
-            {
-                Debug.WriteLine("dates");
-            }
             double requiredProductions = ProductType.GetProductionsRequired(ProductConsumption);
             double builtProductions = (ProductProductions * 1.0) + (ProductProductions25 * 1.25) + (ProductProductions50 * 1.5) + (ProductProductions75 * 1.75);
             double surplusProductions = builtProductions - requiredProductions;

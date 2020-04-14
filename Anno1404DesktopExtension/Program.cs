@@ -47,6 +47,7 @@ namespace Anno1404DesktopExtension
         private static void Connection_ServiceClosed(AppServiceConnection sender, AppServiceClosedEventArgs args)
         {
             Debug.WriteLine("Client Connection_ServiceClosed");
+            Environment.Exit(0);
         }
     }
 }
