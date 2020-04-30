@@ -7,13 +7,13 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="d04a5caf-a426-4ccc-aebd-bfb9fac9f7a1"
-    Publisher="CN=Benni"
-    Version="1.0.2.0" />
+    Name="2383BenediktRadtke.Anno1404Calculator"
+    Publisher="CN=83951ACF-6CF8-48C5-BDC4-D778CAFD26C0"
+    Version="0.1.0.0" />
 
   <Properties>
-    <DisplayName>Anno1404Calculator.Package</DisplayName>
-    <PublisherDisplayName>Benni</PublisherDisplayName>
+    <DisplayName>Anno1404 Calculator</DisplayName>
+    <PublisherDisplayName>Benedikt Radtke</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
