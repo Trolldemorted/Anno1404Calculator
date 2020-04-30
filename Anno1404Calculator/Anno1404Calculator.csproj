@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{4E976CE0-3B13-44A5-A348-AC3C9DF0AD69}</ProjectGuid>
+    <ProjectGuid>{FFB19425-2464-4D77-97B3-049396E6A755}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Anno1404Calculator</RootNamespace>
@@ -12,12 +12,13 @@
     <DefaultLanguage>de-DE</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -116,6 +117,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AnnoStatusDeserializationUtils.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -139,14 +141,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Beer.png" />
+    <Content Include="Assets\Beggars.png" />
     <Content Include="Assets\Books.png" />
-    <Content Include="Assets\BrocadeRobes.png" />
     <Content Include="Assets\Bread.png" />
+    <Content Include="Assets\BrocadeRobes.png" />
     <Content Include="Assets\Candlestick.png" />
     <Content Include="Assets\Carpets.png" />
     <Content Include="Assets\Cider.png" />
+    <Content Include="Assets\Citizens.png" />
     <Content Include="Assets\Coffee.png" />
     <Content Include="Assets\Dates.png" />
+    <Content Include="Assets\Envoys.png" />
     <Content Include="Assets\Fish.png" />
     <Content Include="Assets\FurCoats.png" />
     <Content Include="Assets\Glasses.png" />
@@ -155,7 +160,11 @@
     <Content Include="Assets\Marzipan.png" />
     <Content Include="Assets\Meat.png" />
     <Content Include="Assets\Milk.png" />
+    <Content Include="Assets\Noblemen.png" />
+    <Content Include="Assets\Nomads.png" />
+    <Content Include="Assets\Patricians.png" />
     <Content Include="Assets\PearlNecklaces.png" />
+    <Content Include="Assets\Peasants.png" />
     <Content Include="Assets\Perfume.png" />
     <Content Include="Assets\Spices.png" />
     <Content Include="Assets\Wine.png" />
@@ -178,12 +187,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\CivilizationClass.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Product.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -192,15 +201,15 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Anno1404Calculator.Shared\Anno1404Calculator.Shared.csproj">
+      <Project>{180e6d44-1e73-4c34-be98-933de832db59}</Project>
+      <Name>Anno1404Calculator.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <SDKReference Include="WindowsDesktop, Version=10.0.18362.0">
       <Name>Windows Desktop Extensions for the UWP</Name>
     </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Anno1404Calculator.Shared\Anno1404Calculator.Shared.csproj">
-      <Project>{15db9e92-16a3-41c2-b8e1-c8e2117b445f}</Project>
-      <Name>Anno1404Calculator.Shared</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

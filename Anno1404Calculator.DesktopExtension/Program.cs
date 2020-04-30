@@ -1,4 +1,5 @@
 ﻿using Anno1404Calculator;
+using Anno1404Calculator.DesktopExtension;
 using Anno1404Calculator.Shared;
 using System;
 using System.Diagnostics;

@@ -7,12 +7,12 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="51ee5d3f-3fd7-4cf6-9a8d-1b7894b86712"
+    Name="d04a5caf-a426-4ccc-aebd-bfb9fac9f7a1"
     Publisher="CN=Benni"
-    Version="0.0.1.0" />
+    Version="1.0.2.0" />
 
   <Properties>
-    <DisplayName>Anno1404CalculatorPackage</DisplayName>
+    <DisplayName>Anno1404Calculator.Package</DisplayName>
     <PublisherDisplayName>Benni</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
@@ -31,8 +31,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Anno1404CalculatorPackage"
-        Description="Anno1404CalculatorPackage"
+        DisplayName="Anno1404 Calculator"
+        Description="Anno1404Calculator.Package"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">
@@ -46,7 +46,7 @@
         <desktop:Extension
           xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
           Category="windows.fullTrustProcess"
-          Executable="Anno1404DesktopExtension\Anno1404DesktopExtension.exe" />
+          Executable="Anno1404Calculator.DesktopExtension\Anno1404Calculator.DesktopExtension.exe" />
       </Extensions>
     </Application>
   </Applications>

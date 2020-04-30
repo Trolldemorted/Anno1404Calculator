@@ -11,39 +11,20 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ListView Grid.Row="0" HorizontalAlignment="Center">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListBoxItem>
-                <views:CivilizationClass CivClassName="Beggars" Amount="{x:Bind Model.Beggars, Mode=OneWay}"></views:CivilizationClass>
-            </ListBoxItem>
-            <ListBoxItem>
-                <views:CivilizationClass CivClassName="Peasants" Amount="{x:Bind Model.Peasants, Mode=OneWay}"></views:CivilizationClass>
-            </ListBoxItem>
-            <ListBoxItem>
-                <views:CivilizationClass CivClassName="Citizens" Amount="{x:Bind Model.Citizens, Mode=OneWay}"></views:CivilizationClass>
-            </ListBoxItem>
-            <ListBoxItem>
-                <views:CivilizationClass CivClassName="Patricians" Amount="{x:Bind Model.Patricians, Mode=OneWay}"></views:CivilizationClass>
-            </ListBoxItem>
-            <ListBoxItem>
-                <views:CivilizationClass CivClassName="Noblemen" Amount="{x:Bind Model.Noblemen, Mode=OneWay}"></views:CivilizationClass>
-            </ListBoxItem>
-            <ListBoxItem>
-                <views:CivilizationClass CivClassName="Nomads" Amount="{x:Bind Model.Nomads, Mode=OneWay}"></views:CivilizationClass>
-            </ListBoxItem>
-            <ListBoxItem>
-                <views:CivilizationClass CivClassName="Envoys" Amount="{x:Bind Model.Envoys, Mode=OneWay}"></views:CivilizationClass>
-            </ListBoxItem>
-        </ListView>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 25 0 25">
+            <views:CivilizationClass CivClassName="Beggars" Amount="{x:Bind Model.Beggars, Mode=OneWay}"></views:CivilizationClass>
+            <views:CivilizationClass CivClassName="Peasants" Amount="{x:Bind Model.Peasants, Mode=OneWay}"></views:CivilizationClass>
+            <views:CivilizationClass CivClassName="Citizens" Amount="{x:Bind Model.Citizens, Mode=OneWay}"></views:CivilizationClass>
+            <views:CivilizationClass CivClassName="Patricians" Amount="{x:Bind Model.Patricians, Mode=OneWay}"></views:CivilizationClass>
+            <views:CivilizationClass CivClassName="Noblemen" Amount="{x:Bind Model.Noblemen, Mode=OneWay}"></views:CivilizationClass>
+            <views:CivilizationClass CivClassName="Nomads" Amount="{x:Bind Model.Nomads, Mode=OneWay}"></views:CivilizationClass>
+            <views:CivilizationClass CivClassName="Envoys" Amount="{x:Bind Model.Envoys, Mode=OneWay}"></views:CivilizationClass>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 25 0 25">
             <views:Product ProductType="Fish" ProductConsumption="{x:Bind Model.FishConsumption, Mode=OneWay}"></views:Product>
             <views:Product ProductType="Cider" ProductConsumption="{x:Bind Model.CiderConsumption, Mode=OneWay}"></views:Product>
             <views:Product ProductType="LinenGarments" ProductConsumption="{x:Bind Model.LinenGarmentsConsumption, Mode=OneWay}"></views:Product>
@@ -59,7 +40,7 @@
             <views:Product ProductType="Candlestick" ProductConsumption="{x:Bind Model.CandlestickConsumption, Mode=OneWay}"></views:Product>
             <views:Product ProductType="BrocadeRobes" ProductConsumption="{x:Bind Model.BrocadeRobesConsumption, Mode=OneWay}"></views:Product>
         </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 25 0 25">
             <views:Product ProductType="Dates" ProductConsumption="{x:Bind Model.DatesConsumption, Mode=OneWay}"></views:Product>
             <views:Product ProductType="Milk" ProductConsumption="{x:Bind Model.MilkConsumption, Mode=OneWay}"></views:Product>
             <views:Product ProductType="Carpets" ProductConsumption="{x:Bind Model.CarpetsConsumption, Mode=OneWay}"></views:Product>

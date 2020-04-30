@@ -10,7 +10,7 @@
     d:DesignWidth="400">
 
     <StackPanel>
-        <TextBlock Text="{x:Bind CivClassName}" />
-        <TextBlock Text="{x:Bind Amount, Mode=OneWay}" />
+        <Image Source="{x:Bind CivClassName, Converter={StaticResource CivilizationIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
+        <TextBlock Text="{x:Bind Amount, Mode=OneWay}" IsTextSelectionEnabled="True" />
     </StackPanel>
 </UserControl>

@@ -26,4 +26,22 @@ namespace Anno1404Calculator
             throw new NotImplementedException();
         }
     }
+
+    public class CivilizationIconConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is string civType)
+            {
+                var uri = new Uri("ms-appx:///Assets/" + civType + ".png");
+                return new BitmapImage(uri);
+            }
+            throw new InvalidOperationException();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

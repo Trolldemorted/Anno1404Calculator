@@ -6,6 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <local:ProductIconConverter x:Key="ProductIconConverter"/>
+            <local:CivilizationIconConverter x:Key="CivilizationIconConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

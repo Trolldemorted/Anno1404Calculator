@@ -132,7 +132,7 @@ namespace Anno1404Calculator
 
         private void Connection_RequestReceived(AppServiceConnection sender, AppServiceRequestReceivedEventArgs args)
         {
-            var snapshot = AnnoStatus.Deserialize(args.Request.Message);
+            var snapshot = AnnoStatusDeserializationUtils.Deserialize(args.Request.Message);
             NewAnnoStatus?.Invoke(this, snapshot);
         }
     }

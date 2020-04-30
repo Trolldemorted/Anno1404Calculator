@@ -11,9 +11,9 @@
     <StackPanel Width="Auto">
         <Image Source="{x:Bind ProductType, Converter={StaticResource ProductIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
         <Border x:Name="ConsumptionBorder" Background="Green">
-            <TextBlock Text="{x:Bind sys:String.Format('{0:0.00}', ProductConsumption), Mode=OneWay}" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Bind sys:String.Format('{0:0.00}', ProductConsumption), Mode=OneWay}" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
         </Border>
-        <TextBlock x:Name="ProductProductionsRequired" HorizontalAlignment="Center" />
+        <TextBlock x:Name="ProductProductionsRequired" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
         <TextBox x:Name="ProductionsBox" Text="{x:Bind ProductProductions, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" />
         <TextBox x:Name="ProductionsBox25" Text="{x:Bind ProductProductions25, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" />
         <TextBox x:Name="ProductionsBox50" Text="{x:Bind ProductProductions50, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" />
