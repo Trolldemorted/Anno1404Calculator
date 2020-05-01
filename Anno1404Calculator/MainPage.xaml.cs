@@ -50,7 +50,22 @@ namespace Anno1404Calculator
         private async void App_NewAnnoStatus(object sender, AnnoStatus e)
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => {
-                Model.UpdateAnnoStatus(e);
+                if (PlayerSelectionComboBox.SelectedValue as string == "Player 1")
+                {
+                    Model.UpdateAnnoStatus(e.Player1);
+                }
+                else if (PlayerSelectionComboBox.SelectedValue as string == "Player 2")
+                {
+                    Model.UpdateAnnoStatus(e.Player2);
+                }
+                else if (PlayerSelectionComboBox.SelectedValue as string == "Player 3")
+                {
+                    Model.UpdateAnnoStatus(e.Player3);
+                }
+                else if (PlayerSelectionComboBox.SelectedValue as string == "Player 4")
+                {
+                    Model.UpdateAnnoStatus(e.Player4);
+                }
             });
         }
     }

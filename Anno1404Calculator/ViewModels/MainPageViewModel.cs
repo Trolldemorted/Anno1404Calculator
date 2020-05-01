@@ -68,7 +68,7 @@ namespace Anno1404Calculator.ViewModels
         public double PerfumeProductionRequired { get; set; }
         public double MarzipanProductionRequired { get; set; }
 
-        public void UpdateAnnoStatus(AnnoStatus snapshot)
+        public void UpdateAnnoStatus(AnnoPlayerStatus snapshot)
         {
             // Population
             Beggars = snapshot.Beggars;

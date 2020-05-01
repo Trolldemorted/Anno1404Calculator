@@ -14,13 +14,46 @@ namespace Anno1404Calculator
         {
             return new AnnoStatus()
             {
-                Nomads = (uint)set[nameof(AnnoStatus.Nomads)],
-                Envoys = (uint)set[nameof(AnnoStatus.Envoys)],
-                Beggars = (uint)set[nameof(AnnoStatus.Beggars)],
-                Peasants = (uint)set[nameof(AnnoStatus.Peasants)],
-                Citizens = (uint)set[nameof(AnnoStatus.Citizens)],
-                Patricians = (uint)set[nameof(AnnoStatus.Patricians)],
-                Noblemen = (uint)set[nameof(AnnoStatus.Noblemen)]
+                Player1 = new AnnoPlayerStatus()
+                {
+                    Nomads = (uint)set["player1"+nameof(AnnoPlayerStatus.Nomads)],
+                    Envoys = (uint)set["player1" + nameof(AnnoPlayerStatus.Envoys)],
+                    Beggars = (uint)set["player1" + nameof(AnnoPlayerStatus.Beggars)],
+                    Peasants = (uint)set["player1" + nameof(AnnoPlayerStatus.Peasants)],
+                    Citizens = (uint)set["player1" + nameof(AnnoPlayerStatus.Citizens)],
+                    Patricians = (uint)set["player1" + nameof(AnnoPlayerStatus.Patricians)],
+                    Noblemen = (uint)set["player1" + nameof(AnnoPlayerStatus.Noblemen)]
+                },
+                Player2 = new AnnoPlayerStatus()
+                {
+                    Nomads = (uint)set["player2" + nameof(AnnoPlayerStatus.Nomads)],
+                    Envoys = (uint)set["player2" + nameof(AnnoPlayerStatus.Envoys)],
+                    Beggars = (uint)set["player2" + nameof(AnnoPlayerStatus.Beggars)],
+                    Peasants = (uint)set["player2" + nameof(AnnoPlayerStatus.Peasants)],
+                    Citizens = (uint)set["player2" + nameof(AnnoPlayerStatus.Citizens)],
+                    Patricians = (uint)set["player2" + nameof(AnnoPlayerStatus.Patricians)],
+                    Noblemen = (uint)set["player2" + nameof(AnnoPlayerStatus.Noblemen)]
+                },
+                Player3 = new AnnoPlayerStatus()
+                {
+                    Nomads = (uint)set["player3" + nameof(AnnoPlayerStatus.Nomads)],
+                    Envoys = (uint)set["player3" + nameof(AnnoPlayerStatus.Envoys)],
+                    Beggars = (uint)set["player3" + nameof(AnnoPlayerStatus.Beggars)],
+                    Peasants = (uint)set["player3" + nameof(AnnoPlayerStatus.Peasants)],
+                    Citizens = (uint)set["player3" + nameof(AnnoPlayerStatus.Citizens)],
+                    Patricians = (uint)set["player3" + nameof(AnnoPlayerStatus.Patricians)],
+                    Noblemen = (uint)set["player3" + nameof(AnnoPlayerStatus.Noblemen)]
+                },
+                Player4 = new AnnoPlayerStatus()
+                {
+                    Nomads = (uint)set["player4" + nameof(AnnoPlayerStatus.Nomads)],
+                    Envoys = (uint)set["player4" + nameof(AnnoPlayerStatus.Envoys)],
+                    Beggars = (uint)set["player4" + nameof(AnnoPlayerStatus.Beggars)],
+                    Peasants = (uint)set["player4" + nameof(AnnoPlayerStatus.Peasants)],
+                    Citizens = (uint)set["player4" + nameof(AnnoPlayerStatus.Citizens)],
+                    Patricians = (uint)set["player4" + nameof(AnnoPlayerStatus.Patricians)],
+                    Noblemen = (uint)set["player4" + nameof(AnnoPlayerStatus.Noblemen)]
+                },
             };
         }
     }
