@@ -14,9 +14,9 @@
             <TextBlock Text="{x:Bind sys:String.Format('{0:0.00}', ProductConsumption), Mode=OneWay}" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
         </Border>
         <TextBlock x:Name="ProductProductionsRequired" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
-        <TextBox x:Name="ProductionsBox" Text="{x:Bind ProductProductions, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" />
-        <TextBox x:Name="ProductionsBox25" Text="{x:Bind ProductProductions25, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" />
-        <TextBox x:Name="ProductionsBox50" Text="{x:Bind ProductProductions50, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" />
-        <TextBox x:Name="ProductionsBox75" Text="{x:Bind ProductProductions75, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" />
+        <TextBox x:Name="ProductionsBox" Text="{x:Bind ProductProductions, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
+        <TextBox x:Name="ProductionsBox25" Text="{x:Bind ProductProductions25, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
+        <TextBox x:Name="ProductionsBox50" Text="{x:Bind ProductProductions50, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
+        <TextBox x:Name="ProductionsBox75" Text="{x:Bind ProductProductions75, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
     </StackPanel>
 </UserControl>

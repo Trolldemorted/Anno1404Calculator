@@ -103,6 +103,29 @@ namespace Anno1404Calculator.Views
             args.Cancel = args.NewText.Any(c => !char.IsDigit(c)) && args.NewText != string.Empty;
         }
 
+        private void TextBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            var pos = sender.SelectionStart;
+            var trimmed = TrimInput(sender.Text);
+            var diff = sender.Text.Length - trimmed.Length;
+            sender.Text = trimmed;
+            sender.SelectionStart = pos - diff;
+            if (sender.Text == "0")
+            {
+                sender.SelectionStart = 1;
+            }
+        }
+
+        private string TrimInput(string value)
+        {
+            var trimmed = value.TrimStart('0');
+            if (trimmed == string.Empty)
+            {
+                return "0";
+            }
+            return trimmed;
+        }
+
         private void UpdateEverything()
         {
             double requiredProductions = ProductType.GetProductionsRequired(ProductConsumption);
