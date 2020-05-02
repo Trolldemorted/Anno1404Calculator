@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -32,7 +33,14 @@ namespace Anno1404Calculator.Views
         public Anno1404ProductType ProductType
         {
             get { return (Anno1404ProductType)GetValue(ProductTypeProperty); }
-            set { SetValue(ProductTypeProperty, value); }
+            set 
+            {
+                SetValue(ProductTypeProperty, value);
+                ProductProductions = ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_0"] as int? ?? 0;
+                ProductProductions25 = ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_25"] as int? ?? 0;
+                ProductProductions50 = ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_50"] as int? ?? 0;
+                ProductProductions75 = ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_75"] as int? ?? 0;
+            }
         }
 
         // Using a DependencyProperty as the backing store for ProductType.  This enables animation, styling, binding, etc...
@@ -56,6 +64,7 @@ namespace Anno1404Calculator.Views
             set
             {
                 _ProductProductions = value;
+                ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_0"] = value;
                 UpdateEverything();
             }
         }
@@ -67,6 +76,7 @@ namespace Anno1404Calculator.Views
             set
             {
                 _ProductProductions25 = value;
+                ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_25"] = value;
                 UpdateEverything();
             }
         }
@@ -78,6 +88,7 @@ namespace Anno1404Calculator.Views
             set
             {
                 _ProductProductions50 = value;
+                ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_50"] = value;
                 UpdateEverything();
             }
         }
@@ -89,6 +100,7 @@ namespace Anno1404Calculator.Views
             set
             {
                 _ProductProductions75 = value;
+                ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_75"] = value;
                 UpdateEverything();
             }
         }
