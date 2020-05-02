@@ -16,7 +16,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 25 0 25">
-            <ComboBox x:Name="PlayerSelectionComboBox" Header="Player" PlaceholderText="Pick a color" Width="200">
+            <ComboBox x:Name="PlayerSelectionComboBox" Header="Player" PlaceholderText="Pick a Player" Width="200">
                 <x:String>Player 1</x:String>
                 <x:String>Player 2</x:String>
                 <x:String>Player 3</x:String>
