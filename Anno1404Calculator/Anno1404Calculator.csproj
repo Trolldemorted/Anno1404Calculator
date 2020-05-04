@@ -130,6 +130,9 @@
     <Compile Include="Views\CivilizationClass.xaml.cs">
       <DependentUpon>CivilizationClass.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\IntermediateProductControl.xaml.cs">
+      <DependentUpon>IntermediateProductControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Product.xaml.cs">
       <DependentUpon>Product.xaml</DependentUpon>
     </Compile>
@@ -140,33 +143,70 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Almondplantation.png" />
+    <Content Include="Assets\Apiary.png" />
+    <Content Include="Assets\Barrelcooperage.png" />
     <Content Include="Assets\Beer.png" />
     <Content Include="Assets\Beggars.png" />
     <Content Include="Assets\Books.png" />
     <Content Include="Assets\Bread.png" />
     <Content Include="Assets\BrocadeRobes.png" />
+    <Content Include="Assets\Candlemakersworkshop.png" />
     <Content Include="Assets\Candlestick.png" />
     <Content Include="Assets\Carpets.png" />
+    <Content Include="Assets\Cattlefarm.png" />
     <Content Include="Assets\Cider.png" />
     <Content Include="Assets\Citizens.png" />
+    <Content Include="Assets\Coalmine.png" />
     <Content Include="Assets\Coffee.png" />
+    <Content Include="Assets\Coffeeplantation.png" />
+    <Content Include="Assets\Coppermine.png" />
+    <Content Include="Assets\Coppersmelter.png" />
+    <Content Include="Assets\Cropfarm.png" />
     <Content Include="Assets\Dates.png" />
     <Content Include="Assets\Envoys.png" />
     <Content Include="Assets\Fish.png" />
     <Content Include="Assets\FurCoats.png" />
     <Content Include="Assets\Glasses.png" />
+    <Content Include="Assets\Goldmine.png" />
+    <Content Include="Assets\Goldsmelter.png" />
+    <Content Include="Assets\Hemplantation.png" />
+    <Content Include="Assets\Indigoplantation.png" />
+    <Content Include="Assets\Ironmine.png" />
+    <Content Include="Assets\Ironsmelter.png" />
     <Content Include="Assets\LeatherJerkins.png" />
     <Content Include="Assets\LinenGarments.png" />
+    <Content Include="Assets\Lumberjackshut.png" />
     <Content Include="Assets\Marzipan.png" />
     <Content Include="Assets\Meat.png" />
     <Content Include="Assets\Milk.png" />
+    <Content Include="Assets\Mill.png" />
+    <Content Include="Assets\Monasterygarden.png" />
     <Content Include="Assets\Noblemen.png" />
     <Content Include="Assets\Nomads.png" />
+    <Content Include="Assets\Papermill.png" />
     <Content Include="Assets\Patricians.png" />
+    <Content Include="Assets\Pearlfishershut.png" />
     <Content Include="Assets\PearlNecklaces.png" />
     <Content Include="Assets\Peasants.png" />
     <Content Include="Assets\Perfume.png" />
+    <Content Include="Assets\Pigfarm.png" />
+    <Content Include="Assets\Quartzquarry.png" />
+    <Content Include="Assets\Rosenursery.png" />
+    <Content Include="Assets\Saltmine.png" />
+    <Content Include="Assets\Saltworks.png" />
+    <Content Include="Assets\Silkplantation.png" />
     <Content Include="Assets\Spices.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Sugarcaneplantation.png" />
+    <Content Include="Assets\Sugarmill.png" />
+    <Content Include="Assets\Trapperslodge.png" />
+    <Content Include="Assets\Vineyard.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wine.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -183,6 +223,10 @@
     <Page Include="Views\CivilizationClass.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\IntermediateProductControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Product.xaml">
       <Generator>MSBuild:Compile</Generator>

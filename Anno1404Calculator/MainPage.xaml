@@ -14,6 +14,9 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 25 0 25">
             <ComboBox x:Name="PlayerSelectionComboBox" Header="Player" PlaceholderText="Pick a Player" Width="200">
@@ -31,29 +34,106 @@
             <views:CivilizationClass CivClassName="Envoys" Amount="{x:Bind Model.Envoys, Mode=OneWay}"></views:CivilizationClass>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 25 0 25">
-            <views:Product ProductType="Fish" ProductConsumption="{x:Bind Model.FishConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Cider" ProductConsumption="{x:Bind Model.CiderConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="LinenGarments" ProductConsumption="{x:Bind Model.LinenGarmentsConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Spices" ProductConsumption="{x:Bind Model.SpicesConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Bread" ProductConsumption="{x:Bind Model.BreadConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Beer" ProductConsumption="{x:Bind Model.BeerConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="LeatherJerkins" ProductConsumption="{x:Bind Model.LeatherJerkinsConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Books" ProductConsumption="{x:Bind Model.BooksConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Meat" ProductConsumption="{x:Bind Model.MeatConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="FurCoats" ProductConsumption="{x:Bind Model.FurCoatsConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Wine" ProductConsumption="{x:Bind Model.WineConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Glasses" ProductConsumption="{x:Bind Model.GlassesConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Candlestick" ProductConsumption="{x:Bind Model.CandlestickConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="BrocadeRobes" ProductConsumption="{x:Bind Model.BrocadeRobesConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Fish" ProductConsumption="{x:Bind Model.FishConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.FishProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.FishProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.FishProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.FishProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Cider" ProductConsumption="{x:Bind Model.CiderConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.CiderProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.CiderProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.CiderProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.CiderProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="LinenGarments" ProductConsumption="{x:Bind Model.LinenGarmentsConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.LinenGarmentsProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.LinenGarmentsProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.LinenGarmentsProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.LinenGarmentsProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Spices" ProductConsumption="{x:Bind Model.SpicesConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.SpicesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.SpicesProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.SpicesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.SpicesProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Bread" ProductConsumption="{x:Bind Model.BreadConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.BreadProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.BreadProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.BreadProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.BreadProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Beer" ProductConsumption="{x:Bind Model.BeerConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.BeerProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.BeerProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.BeerProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.BeerProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="LeatherJerkins" ProductConsumption="{x:Bind Model.LeatherJerkinsConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.LeatherJerkinsProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.LeatherJerkinsProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.LeatherJerkinsProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.LeatherJerkinsProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Books" ProductConsumption="{x:Bind Model.BooksConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.BooksProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.BooksProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.BooksProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.BooksProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Meat" ProductConsumption="{x:Bind Model.MeatConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.MeatProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.MeatProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.MeatProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.MeatProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="FurCoats" ProductConsumption="{x:Bind Model.FurCoatsConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.FurCoatsProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.FurCoatsProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.FurCoatsProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.FurCoatsProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Wine" ProductConsumption="{x:Bind Model.WineConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.WineProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.WineProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.WineProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.WineProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Glasses" ProductConsumption="{x:Bind Model.GlassesConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.GlassesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.GlassesProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.GlassesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.GlassesProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Candlestick" ProductConsumption="{x:Bind Model.CandlestickConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.CandlestickProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.CandlestickProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.CandlestickProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.CandlestickProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="BrocadeRobes" ProductConsumption="{x:Bind Model.BrocadeRobesConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.BrocadeRobesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.BrocadeRobesProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.BrocadeRobesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.BrocadeRobesProductions75, Mode=TwoWay}" />
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 25 0 25">
-            <views:Product ProductType="Dates" ProductConsumption="{x:Bind Model.DatesConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Milk" ProductConsumption="{x:Bind Model.MilkConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Carpets" ProductConsumption="{x:Bind Model.CarpetsConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Coffee" ProductConsumption="{x:Bind Model.CoffeeConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="PearlNecklaces" ProductConsumption="{x:Bind Model.PearlNecklacesConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Perfume" ProductConsumption="{x:Bind Model.PerfumeConsumption, Mode=OneWay}"></views:Product>
-            <views:Product ProductType="Marzipan" ProductConsumption="{x:Bind Model.MarzipanConsumption, Mode=OneWay}"></views:Product>
+            <views:Product ProductType="Dates" ProductConsumption="{x:Bind Model.DatesConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.DatesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.DatesProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.DatesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.DatesProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Milk" ProductConsumption="{x:Bind Model.MilkConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.MilkProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.MilkProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.MilkProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.MilkProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Carpets" ProductConsumption="{x:Bind Model.CarpetsConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.CarpetsProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.CarpetsProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.CarpetsProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.CarpetsProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Coffee" ProductConsumption="{x:Bind Model.CoffeeConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.CoffeeProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.CoffeeProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.CoffeeProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.CoffeeProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="PearlNecklaces" ProductConsumption="{x:Bind Model.PearlNecklacesConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.PearlNecklacesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.PearlNecklacesProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.PearlNecklacesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.PearlNecklacesProductions75, Mode=TwoWay}" />
+            <views:Product ProductType="Perfume" ProductConsumption="{x:Bind Model.PerfumeConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.PerfumeProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.PerfumeProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.PerfumeProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.PerfumeProductions75, Mode=TwoWay}" />
+            <views:Product x:Name="MarzipanProduction" ProductType="Marzipan" ProductConsumption="{x:Bind Model.MarzipanConsumption, Mode=OneWay}"
+                           ProductProductions00="{x:Bind Model.MarzipanProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.MarzipanProductions25, Mode=TwoWay}"
+                           ProductProductions50="{x:Bind Model.MarzipanProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.MarzipanProductions75, Mode=TwoWay}" />
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <views:IntermediateProductControl Building="Hemplantation" RequiredProductions="{x:Bind Model.HempfarmsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Cropfarm" RequiredProductions="{x:Bind Model.CropfarmsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Mill" RequiredProductions="{x:Bind Model.MillsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Monasterygarden" RequiredProductions="{x:Bind Model.MonasterygardensRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Coalmine" RequiredProductions="{x:Bind Model.CoalminesRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Saltmine" RequiredProductions="{x:Bind Model.SaltminesRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Saltworks" RequiredProductions="{x:Bind Model.SaltworksRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Pigfarm" RequiredProductions="{x:Bind Model.PigfarmsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Lumberjackshut" RequiredProductions="{x:Bind Model.LumberjackshutsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Papermill" RequiredProductions="{x:Bind Model.PapermillsRequired, Mode=OneWay}" />
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <views:IntermediateProductControl Building="Cattlefarm" RequiredProductions="{x:Bind Model.CattlefarmsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Trapperslodge" RequiredProductions="{x:Bind Model.TrapperslodgesRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Vineyard" RequiredProductions="{x:Bind Model.VineyardsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Ironmine" RequiredProductions="{x:Bind Model.IronminesRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Ironsmelter" RequiredProductions="{x:Bind Model.IronsmeltersRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Barrelcooperage" RequiredProductions="{x:Bind Model.BarrelcooperagesRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Quartzquarry" RequiredProductions="{x:Bind Model.QuartzquarriesRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Coppermine" RequiredProductions="{x:Bind Model.CopperminesRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Coppersmelter" RequiredProductions="{x:Bind Model.CoppersmeltersRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Goldmine" RequiredProductions="{x:Bind Model.GoldminesRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Goldsmelter" RequiredProductions="{x:Bind Model.GoldsmeltersRequired, Mode=OneWay}" />
+        </StackPanel>
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <views:IntermediateProductControl Building="Indigoplantation" RequiredProductions="{x:Bind Model.IndigofarmsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Silkplantation" RequiredProductions="{x:Bind Model.SilkplantationsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Coffeeplantation" RequiredProductions="{x:Bind Model.CoffeeplantationsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Pearlfishershut" RequiredProductions="{x:Bind Model.PearlfishershutsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Rosenursery" RequiredProductions="{x:Bind Model.RosenurseriesRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Almondplantation" RequiredProductions="{x:Bind Model.AlmondplantationsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Sugarcaneplantation" RequiredProductions="{x:Bind Model.SugarcaneplantationsRequired, Mode=OneWay}" />
+            <views:IntermediateProductControl Building="Sugarmill" RequiredProductions="{x:Bind Model.SugarmillsRequired, Mode=OneWay}" />
         </StackPanel>
     </Grid>
 </Page>
