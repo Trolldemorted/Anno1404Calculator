@@ -18,6 +18,11 @@ namespace Anno1404Calculator
                 var uri = new Uri("ms-appx:///Assets/" + Enum.GetName(typeof(Anno1404ProductType), productType) + ".png");
                 return new BitmapImage(uri);
             }
+            if (value is Anno1404IntermediateBuilding intermediateProductType)
+            {
+                var uri = new Uri("ms-appx:///Assets/" + Enum.GetName(typeof(Anno1404IntermediateBuilding), intermediateProductType) + ".png");
+                return new BitmapImage(uri);
+            }
             throw new InvalidOperationException();
         }
 

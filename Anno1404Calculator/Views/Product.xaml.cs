@@ -33,17 +33,8 @@ namespace Anno1404Calculator.Views
         public Anno1404ProductType ProductType
         {
             get { return (Anno1404ProductType)GetValue(ProductTypeProperty); }
-            set 
-            {
-                SetValue(ProductTypeProperty, value);
-                ProductProductions = ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_0"] as int? ?? 0;
-                ProductProductions25 = ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_25"] as int? ?? 0;
-                ProductProductions50 = ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_50"] as int? ?? 0;
-                ProductProductions75 = ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_75"] as int? ?? 0;
-            }
+            set  { SetValue(ProductTypeProperty, value); }
         }
-
-        // Using a DependencyProperty as the backing store for ProductType.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ProductTypeProperty =
             DependencyProperty.Register("ProductType", typeof(Anno1404ProductType), typeof(Product), new PropertyMetadata(Anno1404ProductType.Beer));
 
@@ -52,58 +43,40 @@ namespace Anno1404Calculator.Views
             get { return (double)GetValue(ProductConsumptionProperty); }
             set { SetValue(ProductConsumptionProperty, value); UpdateEverything(); }
         }
-
-        // Using a DependencyProperty as the backing store for ProductConsumption.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ProductConsumptionProperty =
             DependencyProperty.Register("ProductConsumption", typeof(double), typeof(Product), new PropertyMetadata(0.0));
 
-        private int _ProductProductions;
-        public int ProductProductions
+        public uint ProductProductions00
         {
-            get => _ProductProductions;
-            set
-            {
-                _ProductProductions = value;
-                ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_0"] = value;
-                UpdateEverything();
-            }
+            get { return (uint)GetValue(ProductProductions00Property); }
+            set { SetValue(ProductProductions00Property, value); UpdateEverything(); }
         }
+        public static readonly DependencyProperty ProductProductions00Property =
+            DependencyProperty.Register("ProductProductions00", typeof(uint), typeof(Product), new PropertyMetadata((uint)0));
 
-        private int _ProductProductions25;
-        public int ProductProductions25
+        public uint ProductProductions25
         {
-            get => _ProductProductions25;
-            set
-            {
-                _ProductProductions25 = value;
-                ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_25"] = value;
-                UpdateEverything();
-            }
+            get { return (uint)GetValue(ProductProductions25Property); }
+            set { SetValue(ProductProductions25Property, value); UpdateEverything(); }
         }
+        public static readonly DependencyProperty ProductProductions25Property =
+            DependencyProperty.Register("ProductProductions25", typeof(uint), typeof(Product), new PropertyMetadata((uint)0));
 
-        private int _ProductProductions50;
-        public int ProductProductions50
+        public uint ProductProductions50
         {
-            get => _ProductProductions50;
-            set
-            {
-                _ProductProductions50 = value;
-                ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_50"] = value;
-                UpdateEverything();
-            }
+            get { return (uint)GetValue(ProductProductions50Property); }
+            set { SetValue(ProductProductions50Property, value);  UpdateEverything(); }
         }
+        public static readonly DependencyProperty ProductProductions50Property =
+            DependencyProperty.Register("ProductProductions50", typeof(uint), typeof(Product), new PropertyMetadata((uint)0));
 
-        private int _ProductProductions75;
-        public int ProductProductions75
+        public uint ProductProductions75
         {
-            get => _ProductProductions75;
-            set
-            {
-                _ProductProductions75 = value;
-                ApplicationData.Current.LocalSettings.Values[Enum.GetName(typeof(Anno1404ProductType), ProductType) + "_75"] = value;
-                UpdateEverything();
-            }
+            get { return (uint)GetValue(ProductProductions75Property); }
+            set { SetValue(ProductProductions75Property, value); UpdateEverything(); }
         }
+        public static readonly DependencyProperty ProductProductions75Property =
+            DependencyProperty.Register("ProductProductions75", typeof(uint), typeof(Product), new PropertyMetadata((uint)0));
 
         public Product()
         {
@@ -141,7 +114,7 @@ namespace Anno1404Calculator.Views
         private void UpdateEverything()
         {
             double requiredProductions = ProductType.GetProductionsRequired(ProductConsumption);
-            double builtProductions = (ProductProductions * 1.0) + (ProductProductions25 * 1.25) + (ProductProductions50 * 1.5) + (ProductProductions75 * 1.75);
+            double builtProductions = (ProductProductions00 * 1.0) + (ProductProductions25 * 1.25) + (ProductProductions50 * 1.5) + (ProductProductions75 * 1.75);
             double surplusProductions = builtProductions - requiredProductions;
             if (surplusProductions <= RedThreshold)
             {
