@@ -21,12 +21,10 @@ steps:
   inputs:
     version: '3.1.x'
     packageType: sdk
-
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
+  
+- task: DotNetCoreCLI@2
   inputs:
-    restoreSolution: '$(solution)'
+    command: 'restore'
 
 - task: VSBuild@1
   inputs:
