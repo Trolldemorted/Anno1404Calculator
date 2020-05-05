@@ -1,0 +1,58 @@
+trigger:
+  tags:
+    include:
+      - v*
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'x86|x64'
+  buildConfiguration: 'Release'
+  appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
+
+steps:
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'Anno1404Calculator.Shared/Anno1404Calculator.Shared.csproj'
+    configuration: 'Release'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'Anno1404Calculator.DesktopExtension/Anno1404Calculator.DesktopExtension.csproj'
+    configuration: 'Release'
+
+- task: MSBuild@1
+  inputs:
+    solution: '$(solution)'
+    configuration: '$(buildConfiguration)'
+    platform: 'x86'
+
+- task: MSBuild@1
+  inputs:
+    solution: '$(solution)'
+    configuration: '$(buildConfiguration)'
+    platform: 'x64'
+
+- task: MSBuild@1
+  inputs:
+    solution: '$(solution)'
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:UapAppxPackageBuildMode=StoreUpload'
+
+- task: store-publish@0
+  inputs:
+    serviceEndpoint: 'Appstore'
+    appId: '9N9CXMWT24TK'
+    packagePath: '$(appxPackageDir)\**\Anno1404Calculator.Package_*_x86_x64.msixbundle'
+    force: false
+    skipPolling: false
