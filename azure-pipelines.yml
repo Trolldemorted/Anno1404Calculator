@@ -16,19 +16,13 @@ variables:
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
 
 steps:
-- task: UseDotNet@2 
-  displayName: ".NET Core 3.1.x"
-  inputs:
-    version: '3.1.x'
-    packageType: sdk
-  
-- task: DotNetCoreCLI@2
+
+- task: NuGetCommand@2
   inputs:
     command: 'restore'
 
-- task: VSBuild@1
+- task: MSBuild@1
   inputs:
-    platform: 'x86'
     solution: '$(solution)'
     configuration: '$(buildConfiguration)'
-    msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
+    msbuildArguments: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
