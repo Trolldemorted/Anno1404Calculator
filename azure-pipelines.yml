@@ -21,8 +21,18 @@ steps:
   inputs:
     command: 'restore'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'Anno1404Calculator.Shared/Anno1404Calculator.Shared.csproj'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'Anno1404Calculator.DesktopExtension/Anno1404Calculator.DesktopExtension.csproj'
 - task: MSBuild@1
   inputs:
     solution: '$(solution)'
     configuration: '$(buildConfiguration)'
+    platform: 'x64'
     msbuildArguments: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
