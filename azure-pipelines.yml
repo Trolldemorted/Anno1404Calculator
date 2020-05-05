@@ -50,3 +50,8 @@ steps:
     solution: '$(solution)'
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:UapAppxPackageBuildMode=StoreUpload'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'tree /F'
