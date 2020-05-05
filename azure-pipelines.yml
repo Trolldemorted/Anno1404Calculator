@@ -44,10 +44,9 @@ steps:
     solution: '$(solution)'
     configuration: '$(buildConfiguration)'
     platform: 'x64'
-    
 
 - task: MSBuild@1
   inputs:
     solution: '$(solution)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=StoreUpload'
+    msbuildArguments: '/p:AppxBundlePlatforms="$(buildPlatform)" /p:AppxPackageDir="$(appxPackageDir)" /p:UapAppxPackageBuildMode=StoreUpload'
