@@ -1,1 +1,1 @@
-# Anno1404Calculator
+# Anno1404Calculator [![Build Status](https://dev.azure.com/benediktradtke/Anno1404Calculator/_apis/build/status/Trolldemorted.Anno1404Calculator?branchName=master)](https://dev.azure.com/benediktradtke/Anno1404Calculator/_build/) [![](https://tokei.rs/b1/github/enowars/EnoEngine)](#)
