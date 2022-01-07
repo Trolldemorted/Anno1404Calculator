@@ -9,7 +9,7 @@
   <Identity
     Name="2383BenediktRadtke.568509E5B58C0"
     Publisher="CN=83951ACF-6CF8-48C5-BDC4-D778CAFD26C0"
-    Version="0.1.2.0" />
+    Version="0.1.3.0" />
 
   <Properties>
     <DisplayName>Anno 1404 Calculator</DisplayName>
