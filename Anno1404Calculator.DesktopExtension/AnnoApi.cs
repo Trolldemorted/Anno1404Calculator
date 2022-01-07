@@ -77,11 +77,11 @@ namespace Anno1404Calculator
             var player4Emmis = ReadU32(handle, inhabitantsBase + Player4EmmisOffset);
 
             // production
-            var productionBase0 = ReadU32(handle, 0x012D2BFC); //"Addon.exe" + 0x00Ed2BFC
-            var productionBase1 = ReadU32(handle, productionBase0 + 0x5B0);
-            var productionBase2 = ReadU32(handle, productionBase1 + 0x5A4);
-            var carpetWorkshops = ReadU32(handle, productionBase2 + 0x7DC);
-            var roesterei = ReadU32(handle, productionBase2 + 0x7DC - 0x318);
+            // var productionBase0 = ReadU32(handle, 0x012D2BFC); //"Addon.exe" + 0x00Ed2BFC
+            // var productionBase1 = ReadU32(handle, productionBase0 + 0x5B0);
+            // var productionBase2 = ReadU32(handle, productionBase1 + 0x5A4);
+            // var carpetWorkshops = ReadU32(handle, productionBase2 + 0x7DC);
+            //  var roesterei = ReadU32(handle, productionBase2 + 0x7DC - 0x318);
 
             PInvoke.CloseHandle(handle);
             return new AnnoStatus

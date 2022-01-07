@@ -33,8 +33,6 @@ namespace Anno1404DesktopExtension
                 {
                     var anno = new AnnoApi();
                     var snapshot = anno.Read();
-                    //var snapshot = new AnnoStatus();
-                    //snapshot.Nomads = 2000; // (uint)new Random().Next() % 10000;
                     await connection.SendMessageAsync(snapshot.Serialize());
                 }
                 catch (Exception e)
