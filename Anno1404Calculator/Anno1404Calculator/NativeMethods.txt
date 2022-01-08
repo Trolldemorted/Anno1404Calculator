@@ -1,0 +1,3 @@
+﻿OpenProcess
+ReadProcessMemory
+CloseHandle
