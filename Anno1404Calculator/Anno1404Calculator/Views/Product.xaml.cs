@@ -98,22 +98,22 @@ public sealed partial class Product : UserControl
 
     private void UpdateEverything()
     {
-        double requiredProductions = ProductType.GetProductionsRequired(ProductConsumption);
-        double builtProductions = (ProductProductions00 * 1.0) + (ProductProductions25 * 1.25) + (ProductProductions50 * 1.5) + (ProductProductions75 * 1.75);
-        double surplusProductions = builtProductions - requiredProductions;
-        if (surplusProductions <= RedThreshold)
+        double requiredUnbuffedProductionBuildings = ProductType.GetProductionsRequired(ProductConsumption);
+        double currentUnbuffedProductionBuildings = (ProductProductions00 * 1.0) + (ProductProductions25 * 1.25) + (ProductProductions50 * 1.5) + (ProductProductions75 * 1.75);
+        double surplusUnbuffedProductionBuildings = currentUnbuffedProductionBuildings - requiredUnbuffedProductionBuildings;
+        if (surplusUnbuffedProductionBuildings <= RedThreshold)
         {
             ConsumptionBorder.Background = new SolidColorBrush(Colors.Red);
         }
-        else if (surplusProductions <= OrangeThreshold)
+        else if (surplusUnbuffedProductionBuildings <= OrangeThreshold)
         {
             ConsumptionBorder.Background = new SolidColorBrush(Colors.Orange);
         }
-        else if (surplusProductions <= YellowThreshold)
+        else if (surplusUnbuffedProductionBuildings <= YellowThreshold)
         {
             ConsumptionBorder.Background = new SolidColorBrush(Colors.Yellow);
         }
-        else if (surplusProductions <= LightGreenThreshold)
+        else if (surplusUnbuffedProductionBuildings <= LightGreenThreshold)
         {
             ConsumptionBorder.Background = new SolidColorBrush(Colors.LightGreen);
         }
@@ -121,6 +121,6 @@ public sealed partial class Product : UserControl
         {
             ConsumptionBorder.Background = new SolidColorBrush(Colors.Green);
         }
-        ProductProductionsRequired.Text = string.Format("{0:0.00}", requiredProductions);
+        ProductProduction.Text = string.Format("{0:0.00}", ProductType.GetProduction(currentUnbuffedProductionBuildings));
     }
 }
