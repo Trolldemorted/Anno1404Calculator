@@ -103,23 +103,23 @@ public sealed partial class Product : UserControl
         double surplusUnbuffedProductionBuildings = currentUnbuffedProductionBuildings - requiredUnbuffedProductionBuildings;
         if (surplusUnbuffedProductionBuildings <= RedThreshold)
         {
-            ConsumptionBorder.Background = new SolidColorBrush(Colors.Red);
+            ProductionPanel.Background = new SolidColorBrush(Colors.Red);
         }
         else if (surplusUnbuffedProductionBuildings <= OrangeThreshold)
         {
-            ConsumptionBorder.Background = new SolidColorBrush(Colors.Orange);
+            ProductionPanel.Background = new SolidColorBrush(Colors.Orange);
         }
         else if (surplusUnbuffedProductionBuildings <= YellowThreshold)
         {
-            ConsumptionBorder.Background = new SolidColorBrush(Colors.Yellow);
+            ProductionPanel.Background = new SolidColorBrush(Colors.Yellow);
         }
         else if (surplusUnbuffedProductionBuildings <= LightGreenThreshold)
         {
-            ConsumptionBorder.Background = new SolidColorBrush(Colors.LightGreen);
+            ProductionPanel.Background = new SolidColorBrush(Colors.LightGreen);
         }
         else
         {
-            ConsumptionBorder.Background = new SolidColorBrush(Colors.Green);
+            ProductionPanel.Background = new SolidColorBrush(Colors.Green);
         }
         ProductProduction.Text = string.Format("{0:0.00}", ProductType.GetProduction(currentUnbuffedProductionBuildings));
     }

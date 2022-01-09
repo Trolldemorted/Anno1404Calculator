@@ -26,6 +26,7 @@
                 <views:CivilizationClass CivClassName="Nomads" Amount="{x:Bind Model.Nomads, Mode=OneWay}"></views:CivilizationClass>
                 <views:CivilizationClass CivClassName="Envoys" Amount="{x:Bind Model.Envoys, Mode=OneWay}"></views:CivilizationClass>
             </controls:WrapPanel>
+            <TextBlock HorizontalAlignment="Center" Text="Occidental wares consumption and production:" Margin="0 20 0 5"/>
             <controls:WrapPanel HorizontalAlignment="Center">
                 <views:Product ProductType="Fish" ProductConsumption="{x:Bind Model.FishConsumption, Mode=OneWay}"
                                ProductProductions00="{x:Bind Model.FishProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.FishProductions25, Mode=TwoWay}"
@@ -70,7 +71,8 @@
                                ProductProductions00="{x:Bind Model.BrocadeRobesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.BrocadeRobesProductions25, Mode=TwoWay}"
                                ProductProductions50="{x:Bind Model.BrocadeRobesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.BrocadeRobesProductions75, Mode=TwoWay}" />
             </controls:WrapPanel>
-                <controls:WrapPanel HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" Text="Oriental wares consumption and production:" Margin="0 20 0 5"/>
+            <controls:WrapPanel HorizontalAlignment="Center">
                 <views:Product ProductType="Dates" ProductConsumption="{x:Bind Model.DatesConsumption, Mode=OneWay}"
                                ProductProductions00="{x:Bind Model.DatesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.DatesProductions25, Mode=TwoWay}"
                                ProductProductions50="{x:Bind Model.DatesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.DatesProductions75, Mode=TwoWay}" />
@@ -93,6 +95,7 @@
                                ProductProductions00="{x:Bind Model.MarzipanProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.MarzipanProductions25, Mode=TwoWay}"
                                ProductProductions50="{x:Bind Model.MarzipanProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.MarzipanProductions75, Mode=TwoWay}" />
             </controls:WrapPanel>
+            <TextBlock HorizontalAlignment="Center" Text="Intermediate production requirements, calculated from the final production buildings:" Margin="0 20 0 5"/>
             <controls:WrapPanel HorizontalAlignment="Center">
                 <views:IntermediateProductControl Building="Hemplantation" RequiredProductions="{x:Bind Model.HempfarmsRequired, Mode=OneWay}" />
                 <views:IntermediateProductControl Building="Cropfarm" RequiredProductions="{x:Bind Model.CropfarmsRequired, Mode=OneWay}" />
@@ -115,8 +118,6 @@
                 <views:IntermediateProductControl Building="Coppersmelter" RequiredProductions="{x:Bind Model.CoppersmeltersRequired, Mode=OneWay}" />
                 <views:IntermediateProductControl Building="Goldmine" RequiredProductions="{x:Bind Model.GoldminesRequired, Mode=OneWay}" />
                 <views:IntermediateProductControl Building="Goldsmelter" RequiredProductions="{x:Bind Model.GoldsmeltersRequired, Mode=OneWay}" />
-            </controls:WrapPanel>
-            <controls:WrapPanel HorizontalAlignment="Center">
                 <views:IntermediateProductControl Building="Indigoplantation" RequiredProductions="{x:Bind Model.IndigofarmsRequired, Mode=OneWay}" />
                 <views:IntermediateProductControl Building="Silkplantation" RequiredProductions="{x:Bind Model.SilkplantationsRequired, Mode=OneWay}" />
                 <views:IntermediateProductControl Building="Coffeeplantation" RequiredProductions="{x:Bind Model.CoffeeplantationsRequired, Mode=OneWay}" />
@@ -126,6 +127,7 @@
                 <views:IntermediateProductControl Building="Sugarcaneplantation" RequiredProductions="{x:Bind Model.SugarcaneplantationsRequired, Mode=OneWay}" />
                 <views:IntermediateProductControl Building="Sugarmill" RequiredProductions="{x:Bind Model.SugarmillsRequired, Mode=OneWay}" />
             </controls:WrapPanel>
+            <TextBlock Text="{x:Bind Version}" />
         </StackPanel>
     </ScrollViewer>
 </Window>
