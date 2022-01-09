@@ -15,7 +15,7 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         this.InitializeComponent();
-        Task.Run(PollLoop);
+        // Task.Run(PollLoop);
     }
 
     async Task PollLoop()
@@ -49,7 +49,7 @@ public sealed partial class MainWindow : Window
             {
                 Debug.WriteLine($"{e}");
             }
-            await Task.Delay(1000);
+            await Task.Delay(10000);
         }
     }
 }
