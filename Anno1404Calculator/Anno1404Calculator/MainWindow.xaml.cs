@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 public sealed partial class MainWindow : Window
 {
     public MainPageViewModel Model { get; set; } = new MainPageViewModel();
-    public Version Version { get; } = Assembly.GetExecutingAssembly().GetName().Version;
+    public string Version { get; } = $"Anno 1404 Calculator v{Assembly.GetExecutingAssembly().GetName().Version}";
     private readonly AnnoApi annoApi = new AnnoApi();
 
     public MainWindow()

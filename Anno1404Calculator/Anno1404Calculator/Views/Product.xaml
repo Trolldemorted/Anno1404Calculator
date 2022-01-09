@@ -15,7 +15,7 @@
     <StackPanel Width="Auto" Margin="2 2 2 2" BorderBrush="Beige" BorderThickness="2">
         <!-- Header -->
         <Image Source="{x:Bind ProductType, Converter={StaticResource ProductIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
-        <StackPanel HorizontalAlignment="Center" Background="LightBlue" Width="70" ToolTipService.ToolTip="Consumed wares per minute (live)">
+        <StackPanel HorizontalAlignment="Center" Background="LightBlue" VerticalAlignment="Stretch" ToolTipService.ToolTip="Consumed wares per minute (live)">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="C" Padding="0 0 5 0"/>
                 <TextBlock Text="{x:Bind sys:String.Format('{0:0.00}', ProductConsumption), Mode=OneWay}" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
