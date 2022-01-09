@@ -10,16 +10,25 @@
 
     <UserControl.Resources>
         <x:Double x:Key="TextControlThemeMinWidth">40</x:Double>
-        <x:Double x:Key="TextControlThemeMinHeight">1</x:Double>
     </UserControl.Resources>
 
     <StackPanel Width="Auto" Margin="2 2 2 2" BorderBrush="Beige" BorderThickness="2">
         <!-- Header -->
         <Image Source="{x:Bind ProductType, Converter={StaticResource ProductIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
         <Border x:Name="ConsumptionBorder" Background="Green">
-            <TextBlock Text="{x:Bind sys:String.Format('{0:0.00}', ProductConsumption), Mode=OneWay}" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
+            <StackPanel HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="C" Padding="0 0 5 0"/>
+                    <TextBlock Text="{x:Bind sys:String.Format('{0:0.00}', ProductConsumption), Mode=OneWay}" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="P" Padding="0 0 5 0"/>
+                    <TextBlock x:Name="ProductProduction" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
+                </StackPanel>
+                
+            </StackPanel>
         </Border>
-        <TextBlock x:Name="ProductProductionsRequired" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
+        
         <!-- Production -->
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="  +0%" VerticalAlignment="Center" />
