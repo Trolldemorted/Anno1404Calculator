@@ -15,35 +15,32 @@
     <StackPanel Width="Auto" Margin="2 2 2 2" BorderBrush="Beige" BorderThickness="2">
         <!-- Header -->
         <Image Source="{x:Bind ProductType, Converter={StaticResource ProductIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
-        <Border x:Name="ConsumptionBorder" Background="Green">
-            <StackPanel HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="C" Padding="0 0 5 0"/>
-                    <TextBlock Text="{x:Bind sys:String.Format('{0:0.00}', ProductConsumption), Mode=OneWay}" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="P" Padding="0 0 5 0"/>
-                    <TextBlock x:Name="ProductProduction" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
-                </StackPanel>
-                
+        <StackPanel HorizontalAlignment="Center" Background="LightBlue" Width="70" ToolTipService.ToolTip="Consumed wares per minute (live)">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="C" Padding="0 0 5 0"/>
+                <TextBlock Text="{x:Bind sys:String.Format('{0:0.00}', ProductConsumption), Mode=OneWay}" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
             </StackPanel>
-        </Border>
-        
+            <StackPanel x:Name="ProductionPanel" Orientation="Horizontal" ToolTipService.ToolTip="Produced wares per minute (calcuated from buildings)">
+                <TextBlock Text="P" Padding="0 0 5 0"/>
+                <TextBlock x:Name="ProductProduction" HorizontalAlignment="Center" IsTextSelectionEnabled="True" />
+            </StackPanel>
+        </StackPanel>
+
         <!-- Production -->
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="  +0%" VerticalAlignment="Center" />
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="Final production buildings with 100% efficiency">
+            <TextBlock Text="  +0%" VerticalAlignment="Center" Foreground="Gray" />
             <TextBox x:Name="ProductionsBox00" Width="40" Text="{x:Bind ProductProductions00, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="+25%" VerticalAlignment="Center" />
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="Final production buildings with 100% efficiency and 25% increased output">
+            <TextBlock Text="+25%" VerticalAlignment="Center" Foreground="Gray" />
             <TextBox x:Name="ProductionsBox25" Text="{x:Bind ProductProductions25, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="+50%" VerticalAlignment="Center" />
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="Final production buildings with 100% efficiency and 50% increased output">
+            <TextBlock Text="+50%" VerticalAlignment="Center" Foreground="Gray" />
             <TextBox x:Name="ProductionsBox50" Text="{x:Bind ProductProductions50, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="+75%" VerticalAlignment="Center" />
+        <StackPanel Orientation="Horizontal" ToolTipService.ToolTip="Final production buildings with 100% efficiency and 75% increased output">
+            <TextBlock Text="+75%" VerticalAlignment="Center" Foreground="Gray" />
             <TextBox x:Name="ProductionsBox75" Text="{x:Bind ProductProductions75, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
         </StackPanel>
     </StackPanel>

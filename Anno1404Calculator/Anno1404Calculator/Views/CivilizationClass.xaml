@@ -9,8 +9,8 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <StackPanel>
+    <StackPanel Background="LightBlue" ToolTipService.ToolTip="Inhabitants (live)">
         <Image Source="{x:Bind CivClassName, Converter={StaticResource CivilizationIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
-        <TextBlock Text="{x:Bind Amount, Mode=OneWay}" IsTextSelectionEnabled="True" />
+        <TextBlock Text="{x:Bind Amount, Mode=OneWay}" IsTextSelectionEnabled="True" VerticalAlignment="Center" />
     </StackPanel>
 </UserControl>

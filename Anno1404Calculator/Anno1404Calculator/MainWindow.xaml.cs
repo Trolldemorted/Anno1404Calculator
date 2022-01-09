@@ -5,17 +5,19 @@ using Anno1404Calculator.ViewModels;
 using Microsoft.UI.Xaml;
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Threading.Tasks;
 
 public sealed partial class MainWindow : Window
 {
     public MainPageViewModel Model { get; set; } = new MainPageViewModel();
+    public Version Version { get; } = Assembly.GetExecutingAssembly().GetName().Version;
     private readonly AnnoApi annoApi = new AnnoApi();
 
     public MainWindow()
     {
         this.InitializeComponent();
-        // Task.Run(PollLoop);
+        Task.Run(PollLoop);
     }
 
     async Task PollLoop()
@@ -49,8 +51,7 @@ public sealed partial class MainWindow : Window
             {
                 Debug.WriteLine($"{e}");
             }
-            await Task.Delay(10000);
+            await Task.Delay(1000);
         }
     }
 }
-
