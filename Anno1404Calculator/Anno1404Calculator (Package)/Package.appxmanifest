@@ -7,13 +7,13 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="91d5b961-b59b-430f-b945-e9bcf45ea5d6"
-    Publisher="CN=Benni"
-    Version="1.0.0.0" />
+    Name="2383BenediktRadtke.568509E5B58C0"
+    Publisher="CN=83951ACF-6CF8-48C5-BDC4-D778CAFD26C0"
+    Version="0.2.0.0" />
 
   <Properties>
-    <DisplayName>Anno1404Calculator (Package)</DisplayName>
-    <PublisherDisplayName>Benni</PublisherDisplayName>
+    <DisplayName>Anno 1404 Calculator</DisplayName>
+    <PublisherDisplayName>Benedikt Radtke</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
@@ -31,7 +31,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Anno1404Calculator (Package)"
+        DisplayName="Anno 1404 Calculator"
         Description="Anno1404Calculator (Package)"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
