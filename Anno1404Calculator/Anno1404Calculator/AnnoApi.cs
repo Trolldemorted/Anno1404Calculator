@@ -73,15 +73,7 @@ public class AnnoApi
         var player4Nomads = ReadU32(handle, inhabitantsBase + Player4NomadsOffset);
         var player4Emmis = ReadU32(handle, inhabitantsBase + Player4EmmisOffset);
 
-        // production
-        // var productionBase0 = ReadU32(handle, 0x012D2BFC); //"Addon.exe" + 0x00Ed2BFC
-        // var productionBase1 = ReadU32(handle, productionBase0 + 0x5B0);
-        // var productionBase2 = ReadU32(handle, productionBase1 + 0x5A4);
-        // var carpetWorkshops = ReadU32(handle, productionBase2 + 0x7DC);
-        //  var roesterei = ReadU32(handle, productionBase2 + 0x7DC - 0x318);
-
-        handle.Close();
-        return new AnnoStatus
+        var status = new AnnoStatus
         {
             Player1 = new AnnoPlayerStatus()
             {
@@ -91,7 +83,38 @@ public class AnnoApi
                 Citizens = player1Citizens,
                 Noblemen = player1Noblemen,
                 Nomads = player1Nomads,
-                Envoys = player1Emmis
+                Envoys = player1Emmis,
+                Lumberjackshuts = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Lumberjackshut),
+                Indigoplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Indigoplantation),
+                Papermills = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Papermill),
+                Quartzquarries = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Quartzquarry),
+                Almondplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Almondplantation),
+                Cattlefarms = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Cattlefarm),
+                Apiaries = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Apiary),
+                Candlemakersworkshops = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Candlemakersworkshop),
+                Coalmines = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Coalmine),
+                Coffeeplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Coffeeplantation),
+                Coppermines = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Coppermine),
+                Coppersmelters = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Coppersmelter),
+                Cropfarms = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Cropfarm),
+                // Goldsmelters = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Goldsmelter),
+                Hempplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Hempplantation),
+                Mills = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Mill),
+                Monasterygardens = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Monasterygarden),
+                Pigfarms = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Pigfarm),
+                Rosenurseries = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Rosenursery),
+                Saltmines = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Saltmine),
+                Saltworks = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Saltworks),
+                Silkplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Silkplantation),
+                Sugarcaneplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Sugarcaneplantation),
+                Sugarmills = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Sugarmill),
+                Trapperslodges = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Trapperslodge),
+                Barrelcooperage = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Barrelcooperage),
+                // Goldmines = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Goldmine),
+                Ironmine = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Ironmine),
+                Ironsmelter = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Ironsmelter),
+                Pearlfishershut = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Pearlfishershut),
+                Vineyards = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Vineyard),
             },
             Player2 = new AnnoPlayerStatus()
             {
@@ -124,9 +147,39 @@ public class AnnoApi
                 Envoys = player4Emmis
             }
         };
+
+        handle.Close();
+        return status;
     }
 
-    unsafe uint ReadU32(Microsoft.Win32.SafeHandles.SafeFileHandle handle, uint address)
+    private uint? ReadBuildingCount(Microsoft.Win32.SafeHandles.SafeFileHandle handle, Anno1404IntermediateBuilding building)
+    {
+        uint buildingId = building.GetBuildingId();
+        uint hugeTablePtr = ReadU32(handle, 0x012D92D8);
+        uint firstPtr = hugeTablePtr + 0x79A4;
+        uint nextPtr = ReadU32(handle, firstPtr + 0x4);
+
+        for (int i = 0; i < 20; i++)
+        {
+            uint nextId = ReadU32(handle, nextPtr + 0x10);
+            if (nextId == buildingId)
+            {
+                return ReadU32(handle, nextPtr + 0x14);
+            }
+            else if (nextId < buildingId)
+            {
+                nextPtr = ReadU32(handle, nextPtr + 0xC);
+            }
+            else
+            {
+                nextPtr = ReadU32(handle, nextPtr + 0x8);
+            }
+        }
+
+        return null;
+    }
+
+    private unsafe uint ReadU32(Microsoft.Win32.SafeHandles.SafeFileHandle handle, uint address)
     {
         Span<byte> buffer = stackalloc byte[4];
         uint read = 0;
@@ -136,7 +189,10 @@ public class AnnoApi
         }
         
         if (read != 4)
-            throw new InvalidOperationException();
+        {
+            // throw new InvalidOperationException();
+        }
+
         return BinaryPrimitives.ReadUInt32LittleEndian(buffer);
     }
 }

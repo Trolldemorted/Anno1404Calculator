@@ -107,35 +107,35 @@
             </controls:WrapPanel>
             <TextBlock Grid.Row="5" HorizontalAlignment="Center" Text="Intermediate production requirements, calculated from the final production buildings:" Margin="0 20 0 5"/>
             <controls:WrapPanel Grid.Row="6" HorizontalAlignment="Center">
-                <views:IntermediateProductControl Building="Hemplantation" RequiredProductions="{x:Bind Model.HempfarmsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Cropfarm" RequiredProductions="{x:Bind Model.CropfarmsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Mill" RequiredProductions="{x:Bind Model.MillsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Monasterygarden" RequiredProductions="{x:Bind Model.MonasterygardensRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Coalmine" RequiredProductions="{x:Bind Model.CoalminesRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Saltmine" RequiredProductions="{x:Bind Model.SaltminesRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Saltworks" RequiredProductions="{x:Bind Model.SaltworksRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Pigfarm" RequiredProductions="{x:Bind Model.PigfarmsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Lumberjackshut" RequiredProductions="{x:Bind Model.LumberjackshutsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Papermill" RequiredProductions="{x:Bind Model.PapermillsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Cattlefarm" RequiredProductions="{x:Bind Model.CattlefarmsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Trapperslodge" RequiredProductions="{x:Bind Model.TrapperslodgesRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Vineyard" RequiredProductions="{x:Bind Model.VineyardsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Ironmine" RequiredProductions="{x:Bind Model.IronminesRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Ironsmelter" RequiredProductions="{x:Bind Model.IronsmeltersRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Barrelcooperage" RequiredProductions="{x:Bind Model.BarrelcooperagesRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Quartzquarry" RequiredProductions="{x:Bind Model.QuartzquarriesRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Coppermine" RequiredProductions="{x:Bind Model.CopperminesRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Coppersmelter" RequiredProductions="{x:Bind Model.CoppersmeltersRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Goldmine" RequiredProductions="{x:Bind Model.GoldminesRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Goldsmelter" RequiredProductions="{x:Bind Model.GoldsmeltersRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Indigoplantation" RequiredProductions="{x:Bind Model.IndigofarmsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Silkplantation" RequiredProductions="{x:Bind Model.SilkplantationsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Coffeeplantation" RequiredProductions="{x:Bind Model.CoffeeplantationsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Pearlfishershut" RequiredProductions="{x:Bind Model.PearlfishershutsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Rosenursery" RequiredProductions="{x:Bind Model.RosenurseriesRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Almondplantation" RequiredProductions="{x:Bind Model.AlmondplantationsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Sugarcaneplantation" RequiredProductions="{x:Bind Model.SugarcaneplantationsRequired, Mode=OneWay}" />
-                <views:IntermediateProductControl Building="Sugarmill" RequiredProductions="{x:Bind Model.SugarmillsRequired, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Hempplantation" RequiredProductions="{x:Bind Model.HempfarmsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.HempplantationsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Cropfarm" RequiredProductions="{x:Bind Model.CropfarmsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.CropfarmsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Mill" RequiredProductions="{x:Bind Model.MillsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.MillsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Monasterygarden" RequiredProductions="{x:Bind Model.MonasterygardensRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.MonasterygardensCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Coalmine" RequiredProductions="{x:Bind Model.CoalminesRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.CoalminesCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Saltmine" RequiredProductions="{x:Bind Model.SaltminesRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.SaltminesCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Saltworks" RequiredProductions="{x:Bind Model.SaltworksRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.SaltworksCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Pigfarm" RequiredProductions="{x:Bind Model.PigfarmsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.PigfarmsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Lumberjackshut" RequiredProductions="{x:Bind Model.LumberjackshutsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.LumberjackshutsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Papermill" RequiredProductions="{x:Bind Model.PapermillsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.PapermillsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Cattlefarm" RequiredProductions="{x:Bind Model.CattlefarmsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.CattlefarmsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Trapperslodge" RequiredProductions="{x:Bind Model.TrapperslodgesRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.TrapperslodgesCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Vineyard" RequiredProductions="{x:Bind Model.VineyardsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.VineyardsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Ironmine" RequiredProductions="{x:Bind Model.IronminesRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.IronminesCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Ironsmelter" RequiredProductions="{x:Bind Model.IronsmeltersRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.IronsmeltersCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Barrelcooperage" RequiredProductions="{x:Bind Model.BarrelcooperagesRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.BarrelcooperagesCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Quartzquarry" RequiredProductions="{x:Bind Model.QuartzquarriesRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.QuartzquarriesCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Coppermine" RequiredProductions="{x:Bind Model.CopperminesRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.CopperminesCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Coppersmelter" RequiredProductions="{x:Bind Model.CoppersmeltersRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.CopperminesCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Goldmine" RequiredProductions="{x:Bind Model.GoldminesRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.GoldminesCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Goldsmelter" RequiredProductions="{x:Bind Model.GoldsmeltersRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.GoldsmeltersCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Indigoplantation" RequiredProductions="{x:Bind Model.IndigofarmsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.IndigoplantationsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Silkplantation" RequiredProductions="{x:Bind Model.SilkplantationsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.SilkplantationsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Coffeeplantation" RequiredProductions="{x:Bind Model.CoffeeplantationsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.CoffeeplantationsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Pearlfishershut" RequiredProductions="{x:Bind Model.PearlfishershutsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.PearlfishershutsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Rosenursery" RequiredProductions="{x:Bind Model.RosenurseriesRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.RosenurseriesCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Almondplantation" RequiredProductions="{x:Bind Model.AlmondplantationsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.AlmondplantationsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Sugarcaneplantation" RequiredProductions="{x:Bind Model.SugarcaneplantationsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.SugarcaneplantationsCurrent, Mode=OneWay}" />
+                <views:IntermediateProductControl Building="Sugarmill" RequiredProductions="{x:Bind Model.SugarmillsRequired, Mode=OneWay}" CurrentProductions="{x:Bind Model.SugarmillsCurrent, Mode=OneWay}" />
             </controls:WrapPanel>
             <TextBlock Grid.Row="7" Text="{x:Bind Version}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />
             <TextBlock Grid.Row="8" Text="{x:Bind Version}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />

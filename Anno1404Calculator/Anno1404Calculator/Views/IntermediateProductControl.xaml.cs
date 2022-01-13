@@ -26,4 +26,12 @@ public sealed partial class IntermediateProductControl : UserControl
     }
     public static readonly DependencyProperty RequiredProductionsProperty =
         DependencyProperty.Register("RequiredProductions", typeof(double), typeof(IntermediateProductControl), new PropertyMetadata(0.0));
+
+    public int CurrentProductions
+    {
+        get { return (int)GetValue(CurrentProductionsProperty); }
+        set { SetValue(CurrentProductionsProperty, value); }
+    }
+    public static readonly DependencyProperty CurrentProductionsProperty =
+        DependencyProperty.Register("CurrentProductions", typeof(int), typeof(IntermediateProductControl), new PropertyMetadata(0));
 }

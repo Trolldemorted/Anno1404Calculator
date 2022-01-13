@@ -12,5 +12,6 @@
     <StackPanel Orientation="Vertical">
         <Image Source="{x:Bind Building, Converter={StaticResource ProductIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
         <TextBlock HorizontalAlignment="Center" IsTextSelectionEnabled="True" Text="{x:Bind sys:String.Format('{0:0.00}', RequiredProductions), Mode=OneWay}" />
+        <TextBlock HorizontalAlignment="Center" IsTextSelectionEnabled="True" Text="{x:Bind CurrentProductions, Mode=OneWay}" />
     </StackPanel>
 </UserControl>

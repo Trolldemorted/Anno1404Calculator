@@ -275,6 +275,38 @@ public class MainPageViewModel : INotifyPropertyChanged
     public double SugarcaneplantationsRequired => SugarmillsRequired * 2;
     public double AlmondplantationsRequired => (MarzipanProductions00 + MarzipanProductions25 + MarzipanProductions50 + MarzipanProductions75) * 2;
 
+    // current intermediate production
+    public int SugarcaneplantationsCurrent { get; set; }
+    public int SugarmillsCurrent { get; set; }
+    public int SilkplantationsCurrent { get; set; }
+    public int RosenurseriesCurrent { get; set; }
+    public int HempplantationsCurrent { get; set; }
+    public int GoldsmeltersCurrent { get; set; }
+    public int GoldminesCurrent { get; set; }
+    public int CoppersmeltersCurrent { get; set; }
+    public int CopperminesCurrent { get; set; }
+    public int CoffeeplantationsCurrent { get; set; }
+    public int CandlemakersworkshopsCurrent { get; set; }
+    public int ApiariesCurrent { get; set; }
+    public int AlmondplantationsCurrent { get; set; }
+    public int CropfarmsCurrent { get; set; }
+    public int MillsCurrent { get; set; }
+    public int MonasterygardensCurrent { get; set; }
+    public int CoalminesCurrent { get; set; }
+    public int SaltminesCurrent { get; set; }
+    public int SaltworksCurrent { get; set; }
+    public int PigfarmsCurrent { get; set; }
+    public int PapermillsCurrent { get; set; }
+    public int IndigoplantationsCurrent { get; set; }
+    public int LumberjackshutsCurrent { get; set; }
+    public int CattlefarmsCurrent { get; set; }
+    public int TrapperslodgesCurrent { get; set; }
+    public int VineyardsCurrent { get; set; }
+    public int BarrelcooperagesCurrent { get; set; }
+    public int QuartzquarriesCurrent { get; set; }
+    public int IronminesCurrent { get; set; }
+    public int IronsmeltersCurrent { get; set; }
+    public int PearlfishershutsCurrent { get; set; }
 
     private static uint Load(Anno1404ProductType type, string suffix)
     {
@@ -363,6 +395,39 @@ public class MainPageViewModel : INotifyPropertyChanged
 
         MarzipanConsumption = snapshot.Envoys * 0.00163;
         MarzipanProductionRequired = MarzipanConsumption / 4;
+
+        // Current intermediate production
+        SugarcaneplantationsCurrent = (int)(snapshot.Sugarcaneplantations ?? 0);
+        SugarmillsCurrent = (int)(snapshot.Sugarmills ?? 0);
+        SilkplantationsCurrent = (int)(snapshot.Silkplantations ?? 0);
+        RosenurseriesCurrent = (int)(snapshot.Rosenurseries ?? 0);
+        HempplantationsCurrent = (int)(snapshot.Hempplantations ?? 0);
+        GoldsmeltersCurrent = (int)(snapshot.Goldsmelters ?? 0);
+        GoldminesCurrent = (int)(snapshot.Goldmines ?? 0);
+        CoppersmeltersCurrent = (int)(snapshot.Coppersmelters ?? 0);
+        CopperminesCurrent = (int)(snapshot.Coppermines ?? 0);
+        CoffeeplantationsCurrent = (int)(snapshot.Coffeeplantations ?? 0);
+        CandlemakersworkshopsCurrent = (int)(snapshot.Candlemakersworkshops ?? 0);
+        ApiariesCurrent = (int)(snapshot.Apiaries ?? 0);
+        AlmondplantationsCurrent = (int)(snapshot.Almondplantations ?? 0);
+        CropfarmsCurrent = (int)(snapshot.Cropfarms ?? 0);
+        MillsCurrent = (int)(snapshot.Mills ?? 0);
+        MonasterygardensCurrent = (int)(snapshot.Monasterygardens ?? 0);
+        CoalminesCurrent = (int)(snapshot.Coalmines ?? 0);
+        SaltminesCurrent = (int)(snapshot.Saltmines ?? 0);
+        SaltworksCurrent = (int)(snapshot.Saltworks ?? 0);
+        PigfarmsCurrent = (int)(snapshot.Pigfarms ?? 0);
+        PapermillsCurrent = (int)(snapshot.Papermills ?? 0);
+        IndigoplantationsCurrent = (int)(snapshot.Indigoplantations ?? 0);
+        LumberjackshutsCurrent = (int)(snapshot.Lumberjackshuts ?? 0);
+        CattlefarmsCurrent = (int)(snapshot.Cattlefarms ?? 0);
+        TrapperslodgesCurrent = (int)(snapshot.Trapperslodges ?? 0);
+        VineyardsCurrent = (int)(snapshot.Vineyards ?? 0);
+        BarrelcooperagesCurrent = (int)(snapshot.Barrelcooperage ?? 0);
+        QuartzquarriesCurrent = (int)(snapshot.Quartzquarries ?? 0);
+        IronminesCurrent = (int)(snapshot.Ironmine ?? 0);
+        IronsmeltersCurrent = (int)(snapshot.Ironsmelter ?? 0);
+        PearlfishershutsCurrent = (int)(snapshot.Pearlfishershut ?? 0);
 
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
     }
