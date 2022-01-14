@@ -147,6 +147,10 @@
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Stonemasonshut" IsBuffable="True" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Glasssmelter" IsBuffable="True" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Mosaicworkshop" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Ropeyard" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Weaponsmithy" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Cannonfoundry" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Warmachinesworkshop" IsBuffable="True" />
             </controls:WrapPanel>
             <controls:WrapPanel Grid.Row="3" HorizontalAlignment="Center">
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Hempplantation" />

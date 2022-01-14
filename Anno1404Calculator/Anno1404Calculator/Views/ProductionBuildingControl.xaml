@@ -12,53 +12,53 @@
         <x:Double x:Key="TextControlThemeMinWidth">40</x:Double>
     </UserControl.Resources>
 
-    <Grid Margin="2 2 2 2" BorderBrush="Beige" BorderThickness="2">
+    <Grid Height="Auto">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <!-- Header -->
-        <Image Grid.Row="0" Source="{x:Bind ProductionBuildingType, Converter={StaticResource ProductIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
-        <TextBlock Grid.Row="1" HorizontalAlignment="Center" IsTextSelectionEnabled="True" x:Name="ConsumptionTextBlock" Text="n/a" />
-        <Grid Grid.Row="2" x:Name="ProductionTextBlockGrid">
-            <TextBlock HorizontalAlignment="Center" IsTextSelectionEnabled="True" x:Name="ProductionTextBlock" Text="n/a" />
+        <Grid Margin="2 2 2 2" BorderBrush="Beige" BorderThickness="2" MinWidth="80" Height="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <!-- Header -->
+            <Image Grid.Row="0" Source="{x:Bind ProductionBuildingType, Converter={StaticResource ProductIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" IsTextSelectionEnabled="True" x:Name="ConsumptionTextBlock" Text="n/a" />
+            <Grid Grid.Row="2" x:Name="ProductionTextBlockGrid">
+                <TextBlock HorizontalAlignment="Center" IsTextSelectionEnabled="True" x:Name="ProductionTextBlock" Text="n/a" />
+            </Grid>
+
+            <!-- Inserted Production -->
+            <StackPanel Grid.Row="3" x:Name="Buildings00" Visibility="Collapsed" Orientation="Horizontal" ToolTipService.ToolTip="Buildings without increased output">
+                <TextBlock Text="  +0%" VerticalAlignment="Center" Foreground="Gray" />
+                <TextBox Width="40" Text="{x:Bind ProductProductions00, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
+            </StackPanel>
+            <StackPanel Grid.Row="4" x:Name="Buildings25" Visibility="Collapsed" Orientation="Horizontal" ToolTipService.ToolTip="Buildings with 25% increased output">
+                <TextBlock Text="+25%" VerticalAlignment="Center" Foreground="Gray" />
+                <TextBox Text="{x:Bind ProductProductions25, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
+            </StackPanel>
+            <StackPanel Grid.Row="5" x:Name="Buildings50" Visibility="Collapsed" Orientation="Horizontal" ToolTipService.ToolTip="Buildings with 50% increased output">
+                <TextBlock Text="+50%" VerticalAlignment="Center" Foreground="Gray" />
+                <TextBox Text="{x:Bind ProductProductions50, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
+            </StackPanel>
+            <StackPanel Grid.Row="6" x:Name="Buildings75" Visibility="Collapsed" Orientation="Horizontal" ToolTipService.ToolTip="Buildings with 75% increased output">
+                <TextBlock Text="+75%" VerticalAlignment="Center" Foreground="Gray" />
+                <TextBox Text="{x:Bind ProductProductions75, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
+            </StackPanel>
+
+            <!-- Live production -->
+            <Grid Grid.Row="7" x:Name="TotalBuildingsGrid">
+                <TextBlock Grid.Column="0" Text="Total" />
+                <TextBlock Grid.Column="1" TextAlignment="End" HorizontalAlignment="Right" x:Name="TotalBuildingsTextBlock" Text="n/a" />
+            </Grid>
         </Grid>
-
-        <!-- Inserted Production -->
-        <StackPanel Grid.Row="3" x:Name="Buildings00" Visibility="Collapsed" Orientation="Horizontal" ToolTipService.ToolTip="Final production buildings with 100% efficiency">
-            <TextBlock Text="  +0%" VerticalAlignment="Center" Foreground="Gray" />
-            <TextBox Width="40" Text="{x:Bind ProductProductions00, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
-        </StackPanel>
-        <StackPanel Grid.Row="4" x:Name="Buildings25" Visibility="Collapsed" Orientation="Horizontal" ToolTipService.ToolTip="Buildings with 25% increased output">
-            <TextBlock Text="+25%" VerticalAlignment="Center" Foreground="Gray" />
-            <TextBox Text="{x:Bind ProductProductions25, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
-        </StackPanel>
-        <StackPanel Grid.Row="5" x:Name="Buildings50" Visibility="Collapsed" Orientation="Horizontal" ToolTipService.ToolTip="Buildings with 50% increased output">
-            <TextBlock Text="+50%" VerticalAlignment="Center" Foreground="Gray" />
-            <TextBox Text="{x:Bind ProductProductions50, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
-        </StackPanel>
-        <StackPanel Grid.Row="6" x:Name="Buildings75" Visibility="Collapsed" Orientation="Horizontal" ToolTipService.ToolTip="Buildings with 75% increased output">
-            <TextBlock Text="+75%" VerticalAlignment="Center" Foreground="Gray" />
-            <TextBox Text="{x:Bind ProductProductions75, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" BeforeTextChanging="TextBox_BeforeTextChanging" TextChanging="TextBox_TextChanging" />
-        </StackPanel>
-
-        <!-- Live production -->
-        <TextBlock Grid.Row="7" Grid.Column="0" Text="Total" />
-        <TextBlock Grid.Row="7" Grid.Column="1" TextAlignment="End" HorizontalAlignment="Right" x:Name="TotalBuildingsTextBlock" Text="n/a" />
     </Grid>
 </UserControl>

@@ -128,11 +128,7 @@ public sealed partial class ProductionBuildingControl : UserControl
         if (PlayerStatus != null)
         {
             uint totalBuildings = PlayerStatus.GetBuildingCount(ProductionBuildingType);
-            double production = ProductionBuildingType.GetProductionPerMinute(PlayerStatus, totalBuildings, ProductProductions00, ProductProductions25, ProductProductions50, ProductProductions25);
-            if (ProductionBuildingType == ProductionBuildingEnum.Coalmine || ProductionBuildingType == ProductionBuildingEnum.Charcoalburnershut)
-            {
-                Debug.WriteLine("test");
-            }
+            double production = ProductionBuildingType.GetProductionPerMinute(PlayerStatus, totalBuildings, ProductProductions00, ProductProductions25, ProductProductions50, ProductProductions75);
             double consumption = ProductionBuildingType.GetConsumptionPerMinute(PlayerStatus);
             double surplus = production - consumption;
             double surpluseUnbuffedBuildings = surplus / ProductionBuildingType.GetProductionPerMinuteFactor();
@@ -158,9 +154,18 @@ public sealed partial class ProductionBuildingControl : UserControl
                 ProductionTextBlockGrid.Background = new SolidColorBrush(Colors.Green);
             }
 
+            if (totalBuildings < ProductProductions00 + ProductProductions25 + ProductProductions50 + ProductProductions75)
+            {
+                TotalBuildingsGrid.Background = new SolidColorBrush(Colors.OrangeRed);
+            }
+            else
+            {
+                TotalBuildingsGrid.Background = this.Background;
+            }
+
             ConsumptionTextBlock.Text = $"{consumption:0.00}";
             ProductionTextBlock.Text = $"{production:0.00}";
-            TotalBuildingsTextBlock.Text = $"{totalBuildings:0.00}";
+            TotalBuildingsTextBlock.Text = $"{totalBuildings}";
         }
     }
 }
