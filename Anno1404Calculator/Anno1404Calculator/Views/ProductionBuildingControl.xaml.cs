@@ -1,12 +1,12 @@
 ﻿namespace Anno1404Calculator.Views;
 
 using Anno1404Calculator.Models;
-using Anno1404Calculator.Models.ProductionBuildings;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 public sealed partial class ProductionBuildingControl : UserControl
@@ -17,10 +17,10 @@ public sealed partial class ProductionBuildingControl : UserControl
     private const double LightGreenThreshold = 1;
     public ProductIconConverter ProductIconConverter { get; set; } = new ProductIconConverter();
 
-    public AnnoPlayerStatus PlayerStatus
+    public AnnoPlayerStatus? PlayerStatus
     {
         get { return (AnnoPlayerStatus)GetValue(PlayerStatusProperty); }
-        set { SetValue(PlayerStatusProperty, value); }
+        set { SetValue(PlayerStatusProperty, value); UpdateEverything(); }
     }
     public static readonly DependencyProperty PlayerStatusProperty =
         DependencyProperty.Register("PlayerStatus", typeof(AnnoPlayerStatus), typeof(ProductionBuildingControl), new PropertyMetadata(new AnnoPlayerStatus()));
@@ -61,7 +61,7 @@ public sealed partial class ProductionBuildingControl : UserControl
     public uint ProductProductions00
     {
         get { return (uint)GetValue(ProductProductions00Property); }
-        set { SetValue(ProductProductions00Property, value); UpdateEverything(); }
+        set { SetValue(ProductProductions00Property, value); }
     }
     public static readonly DependencyProperty ProductProductions00Property =
         DependencyProperty.Register("ProductProductions00", typeof(uint), typeof(ProductionBuildingControl), new PropertyMetadata((uint)0));
@@ -69,7 +69,7 @@ public sealed partial class ProductionBuildingControl : UserControl
     public uint ProductProductions25
     {
         get { return (uint)GetValue(ProductProductions25Property); }
-        set { SetValue(ProductProductions25Property, value); UpdateEverything(); }
+        set { SetValue(ProductProductions25Property, value); }
     }
     public static readonly DependencyProperty ProductProductions25Property =
         DependencyProperty.Register("ProductProductions25", typeof(uint), typeof(ProductionBuildingControl), new PropertyMetadata((uint)0));
@@ -77,7 +77,7 @@ public sealed partial class ProductionBuildingControl : UserControl
     public uint ProductProductions50
     {
         get { return (uint)GetValue(ProductProductions50Property); }
-        set { SetValue(ProductProductions50Property, value);  UpdateEverything(); }
+        set { SetValue(ProductProductions50Property, value); }
     }
     public static readonly DependencyProperty ProductProductions50Property =
         DependencyProperty.Register("ProductProductions50", typeof(uint), typeof(ProductionBuildingControl), new PropertyMetadata((uint)0));
@@ -85,15 +85,10 @@ public sealed partial class ProductionBuildingControl : UserControl
     public uint ProductProductions75
     {
         get { return (uint)GetValue(ProductProductions75Property); }
-        set { SetValue(ProductProductions75Property, value); UpdateEverything(); }
+        set { SetValue(ProductProductions75Property, value); }
     }
     public static readonly DependencyProperty ProductProductions75Property =
         DependencyProperty.Register("ProductProductions75", typeof(uint), typeof(ProductionBuildingControl), new PropertyMetadata((uint)0));
-
-    public uint BuildingCount => Building?.Count ?? 0;
-    public double Production => ProductProductions00 + ProductProductions25 * 1.25 + ProductProductions50 * 1.5 + ProductProductions75 * 1.75;
-    public double Consumption => Building.GetCitizenConsumption(PlayerStatus);
-    private IProductionBuilding Building => PlayerStatus?.ProductionBuildings[ProductionBuildingType.GetProductionBuildingType()];
 
     public ProductionBuildingControl()
     {
@@ -130,34 +125,42 @@ public sealed partial class ProductionBuildingControl : UserControl
 
     private void UpdateEverything()
     {
-        // We transform the production and consumption to multiples of the production capacity of an unbuffed building.
-        // This allows us to select colors based on the amount of required buildings.
-        /*
-        double requiredUnbuffedProductionBuildings = ProductType.GetProductionsRequired(ProductConsumption);
-        double currentUnbuffedProductionBuildings = (ProductProductions00 * 1.0) + (ProductProductions25 * 1.25) + (ProductProductions50 * 1.5) + (ProductProductions75 * 1.75);
-        double surplusUnbuffedProductionBuildings = currentUnbuffedProductionBuildings - requiredUnbuffedProductionBuildings;
-        if (surplusUnbuffedProductionBuildings <= RedThreshold)
+        if (PlayerStatus != null)
         {
-            ProductionPanel.Background = new SolidColorBrush(Colors.Red);
-        }
-        else if (surplusUnbuffedProductionBuildings <= OrangeThreshold)
-        {
-            ProductionPanel.Background = new SolidColorBrush(Colors.Orange);
-        }
-        else if (surplusUnbuffedProductionBuildings <= YellowThreshold)
-        {
-            ProductionPanel.Background = new SolidColorBrush(Colors.Yellow);
-        }
-        else if (surplusUnbuffedProductionBuildings <= LightGreenThreshold)
-        {
-            ProductionPanel.Background = new SolidColorBrush(Colors.LightGreen);
-        }
-        else
-        {
-            ProductionPanel.Background = new SolidColorBrush(Colors.Green);
-        }
-        ProductProduction.Text = string.Format("{0:0.00}", ProductType.GetProduction(currentUnbuffedProductionBuildings));
+            uint totalBuildings = PlayerStatus.GetBuildingCount(ProductionBuildingType);
+            double production = ProductionBuildingType.GetProductionPerMinute(PlayerStatus, totalBuildings, ProductProductions00, ProductProductions25, ProductProductions50, ProductProductions25);
+            if (ProductionBuildingType == ProductionBuildingEnum.Coalmine || ProductionBuildingType == ProductionBuildingEnum.Charcoalburnershut)
+            {
+                Debug.WriteLine("test");
+            }
+            double consumption = ProductionBuildingType.GetConsumptionPerMinute(PlayerStatus);
+            double surplus = production - consumption;
+            double surpluseUnbuffedBuildings = surplus / ProductionBuildingType.GetProductionPerMinuteFactor();
 
-        */
+            if (surpluseUnbuffedBuildings <= RedThreshold)
+            {
+                ProductionTextBlockGrid.Background = new SolidColorBrush(Colors.Red);
+            }
+            else if (surpluseUnbuffedBuildings <= OrangeThreshold)
+            {
+                ProductionTextBlockGrid.Background = new SolidColorBrush(Colors.Orange);
+            }
+            else if (surpluseUnbuffedBuildings <= YellowThreshold)
+            {
+                ProductionTextBlockGrid.Background = new SolidColorBrush(Colors.Yellow);
+            }
+            else if (surpluseUnbuffedBuildings <= LightGreenThreshold)
+            {
+                ProductionTextBlockGrid.Background = new SolidColorBrush(Colors.LightGreen);
+            }
+            else
+            {
+                ProductionTextBlockGrid.Background = new SolidColorBrush(Colors.Green);
+            }
+
+            ConsumptionTextBlock.Text = $"{consumption:0.00}";
+            ProductionTextBlock.Text = $"{production:0.00}";
+            TotalBuildingsTextBlock.Text = $"{totalBuildings:0.00}";
+        }
     }
 }

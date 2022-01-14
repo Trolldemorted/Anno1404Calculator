@@ -30,11 +30,14 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <!-- Header -->
-        <Image Grid.Row="0" Grid.Column="0" Source="{x:Bind ProductionBuildingType, Converter={StaticResource ProductIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
-        <TextBlock Grid.Row="1" HorizontalAlignment="Center" IsTextSelectionEnabled="True" Text="{x:Bind BuildingCount}" />
-        <TextBlock Grid.Row="2" HorizontalAlignment="Center" IsTextSelectionEnabled="True" Text="0.00"/>
+        <Image Grid.Row="0" Source="{x:Bind ProductionBuildingType, Converter={StaticResource ProductIconConverter}}" Stretch="Uniform" Width="50" Height="50" />
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" IsTextSelectionEnabled="True" x:Name="ConsumptionTextBlock" Text="n/a" />
+        <Grid Grid.Row="2" x:Name="ProductionTextBlockGrid">
+            <TextBlock HorizontalAlignment="Center" IsTextSelectionEnabled="True" x:Name="ProductionTextBlock" Text="n/a" />
+        </Grid>
 
         <!-- Inserted Production -->
         <StackPanel Grid.Row="3" x:Name="Buildings00" Visibility="Collapsed" Orientation="Horizontal" ToolTipService.ToolTip="Final production buildings with 100% efficiency">
@@ -55,9 +58,7 @@
         </StackPanel>
 
         <!-- Live production -->
-        <StackPanel Grid.Row="7" Orientation="Horizontal" Background="LightBlue">
-            <TextBlock Text="Total" VerticalAlignment="Center"  />
-            <TextBlock Text="{x:Bind BuildingCount}" TextAlignment="End" HorizontalAlignment="Right" />
-        </StackPanel>
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Total" />
+        <TextBlock Grid.Row="7" Grid.Column="1" TextAlignment="End" HorizontalAlignment="Right" x:Name="TotalBuildingsTextBlock" Text="n/a" />
     </Grid>
 </UserControl>

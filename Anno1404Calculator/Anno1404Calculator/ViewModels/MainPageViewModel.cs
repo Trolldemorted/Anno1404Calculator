@@ -11,9 +11,9 @@ using Windows.Storage;
 
 public class MainPageViewModel : INotifyPropertyChanged
 {
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
-    public AnnoPlayerStatus PlayerStatus { get; set; }
+    public AnnoPlayerStatus? PlayerStatus { get; set; } = new AnnoPlayerStatus();
 
     // Defined consumable production
     public uint FishProductions00 { get => _FishProductions00; set { _FishProductions00 = value; Store(Anno1404ProductType.Fish, "_00", value); } }
@@ -196,11 +196,9 @@ public class MainPageViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
     }
 
-    public void UpdateAnnoStatus(AnnoPlayerStatus snapshot)
+    public void UpdateAnnoStatus(AnnoPlayerStatus? snapshot)
     {
         this.PlayerStatus = snapshot;
-
-        // Redraw everything
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
     }
 }

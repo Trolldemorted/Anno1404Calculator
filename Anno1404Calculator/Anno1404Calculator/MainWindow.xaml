@@ -37,110 +37,147 @@
                 <views:CivilizationClass CivClassName="Envoys" Amount="{x:Bind Model.PlayerStatus.Envoys, Mode=OneWay}"></views:CivilizationClass>
             </controls:WrapPanel>
             <controls:WrapPanel Grid.Row="1" HorizontalAlignment="Center">
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Fishermanshut" IsBuffable="True"
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Fishermanshut" IsBuffable="True"
                                                  ProductProductions00="{x:Bind Model.FishProductions00, Mode=TwoWay}"
                                                  ProductProductions25="{x:Bind Model.FishProductions25, Mode=TwoWay}"
                                                  ProductProductions50="{x:Bind Model.FishProductions50, Mode=TwoWay}"
                                                  ProductProductions75="{x:Bind Model.FishProductions75, Mode=TwoWay}" />
-                <!-- 
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Ciderfarm" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.CiderProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.CiderProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.CiderProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.CiderProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Weavershut" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.LinenGarmentsProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.LinenGarmentsProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.LinenGarmentsProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.LinenGarmentsProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Spicefarm" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.SpicesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.SpicesProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.SpicesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.SpicesProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Bakery" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.BreadProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.BreadProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.BreadProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.BreadProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Monasterybrewery" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.BeerProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.BeerProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.BeerProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.BeerProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Tannery" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.LeatherJerkinsProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.LeatherJerkinsProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.LeatherJerkinsProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.LeatherJerkinsProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Printinghouse" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.BooksProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.BooksProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.BooksProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.BooksProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Butchersshop" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.MeatProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.MeatProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.MeatProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.MeatProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Furriersworkshop" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.FurCoatsProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.FurCoatsProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.FurCoatsProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.FurCoatsProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Winepress" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.WineProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.WineProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.WineProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.WineProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Opticiansworkshop" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.GlassesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.GlassesProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.GlassesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.GlassesProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Redsmithsworkshop" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.CandlestickProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.CandlestickProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.CandlestickProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.CandlestickProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Silkweavingmill" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.BrocadeRobesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.BrocadeRobesProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.BrocadeRobesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.BrocadeRobesProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Dateplantation" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.DatesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.DatesProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.DatesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.DatesProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Goatfarm" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.MilkProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.MilkProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.MilkProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.MilkProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Carpetworkshop" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.CarpetsProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.CarpetsProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.CarpetsProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.CarpetsProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Roastinghouse" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.CoffeeProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.CoffeeProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.CoffeeProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.CoffeeProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Pearlworkshop" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.PearlNecklacesProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.PearlNecklacesProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.PearlNecklacesProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.PearlNecklacesProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Perfumery" IsBuffable="True"
-                               ProductProductions00="{x:Bind Model.PerfumeProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.PerfumeProductions25, Mode=TwoWay}"
-                               ProductProductions50="{x:Bind Model.PerfumeProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.PerfumeProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Confectionersworkshop" IsBuffable="True"
-                                                 ProductProductions00="{x:Bind Model.MarzipanProductions00, Mode=TwoWay}" ProductProductions25="{x:Bind Model.MarzipanProductions25, Mode=TwoWay}"
-                                                 ProductProductions50="{x:Bind Model.MarzipanProductions50, Mode=TwoWay}" ProductProductions75="{x:Bind Model.MarzipanProductions75, Mode=TwoWay}" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Toolmakersworkshop" IsBuffable="True" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Lumberjackshut" IsBuffable="True" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Stonemasonshut" IsBuffable="True" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Glasssmelter" IsBuffable="True" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Mosaicworkshop" IsBuffable="True" />
-                -->
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Ciderfarm" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.CiderProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.CiderProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.CiderProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.CiderProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Weavershut" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.LinenGarmentsProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.LinenGarmentsProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.LinenGarmentsProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.LinenGarmentsProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Spicefarm" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.SpicesProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.SpicesProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.SpicesProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.SpicesProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Bakery" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.BreadProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.BreadProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.BreadProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.BreadProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Monasterybrewery" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.BeerProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.BeerProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.BeerProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.BeerProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Tannery" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.LeatherJerkinsProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.LeatherJerkinsProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.LeatherJerkinsProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.LeatherJerkinsProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Printinghouse" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.BooksProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.BooksProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.BooksProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.BooksProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Butchersshop" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.MeatProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.MeatProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.MeatProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.MeatProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Furriersworkshop" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.FurCoatsProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.FurCoatsProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.FurCoatsProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.FurCoatsProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Winepress" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.WineProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.WineProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.WineProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.WineProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Opticiansworkshop" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.GlassesProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.GlassesProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.GlassesProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.GlassesProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Redsmithsworkshop" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.CandlestickProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.CandlestickProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.CandlestickProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.CandlestickProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Silkweavingmill" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.BrocadeRobesProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.BrocadeRobesProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.BrocadeRobesProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.BrocadeRobesProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Dateplantation" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.DatesProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.DatesProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.DatesProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.DatesProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Goatfarm" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.MilkProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.MilkProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.MilkProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.MilkProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Carpetworkshop" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.CarpetsProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.CarpetsProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.CarpetsProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.CarpetsProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Roastinghouse" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.CoffeeProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.CoffeeProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.CoffeeProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.CoffeeProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Pearlworkshop" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.PearlNecklacesProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.PearlNecklacesProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.PearlNecklacesProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.PearlNecklacesProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Perfumery" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.PerfumeProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.PerfumeProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.PerfumeProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.PerfumeProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Confectionersworkshop" IsBuffable="True"
+                                                 ProductProductions00="{x:Bind Model.MarzipanProductions00, Mode=TwoWay}"
+                                                 ProductProductions25="{x:Bind Model.MarzipanProductions25, Mode=TwoWay}"
+                                                 ProductProductions50="{x:Bind Model.MarzipanProductions50, Mode=TwoWay}"
+                                                 ProductProductions75="{x:Bind Model.MarzipanProductions75, Mode=TwoWay}" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Toolmakersworkshop" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Lumberjackshut" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Stonemasonshut" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Glasssmelter" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Mosaicworkshop" IsBuffable="True" />
             </controls:WrapPanel>
             <controls:WrapPanel Grid.Row="3" HorizontalAlignment="Center">
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Hempplantation" />
-                <!--  
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Cropfarm" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Mill" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Monasterygarden" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Saltworks" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Pigfarm" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Cattlefarm" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Trapperslodge" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Vineyard" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Ironmine" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Ironsmelter" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Barrelcooperage" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Quartzquarry" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Coppermine" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Coppersmelter" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Goldmine" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Goldsmelter" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Indigofarm" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Silkplantation" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Coffeeplantation" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Pearlfishershut" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Rosenursery" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Almondplantation" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Sugarcaneplantation" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Coalmine" IsBuffable="True" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Saltmine" IsBuffable="True" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Papermill" IsBuffable="True" />
-                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus}" ProductionBuildingType="Sugarmill" IsBuffable="True" />
-                -->
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Hempplantation" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Cropfarm" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Mill" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Monasterygarden" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Saltworks" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Pigfarm" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Cattlefarm" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Trapperslodge" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Vineyard" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Ironmine" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Ironsmelter" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Barrelcooperage" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Quartzquarry" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Coppermine" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Coppersmelter" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Goldmine" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Goldsmelter" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Indigofarm" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Silkplantation" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Coffeeplantation" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Pearlfishershut" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Rosenursery" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Almondplantation" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Sugarcaneplantation" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Forestglassworks" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Coalmine" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Saltmine" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Papermill" IsBuffable="True" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Sugarmill" IsBuffable="True" />
             </controls:WrapPanel>
             <TextBlock Grid.Row="9" Text="{x:Bind Version}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />
         </Grid>
