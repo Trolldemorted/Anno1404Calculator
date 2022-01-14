@@ -1,8 +1,10 @@
 ﻿namespace Anno1404Calculator; 
 
 using Anno1404Calculator.Models;
+using Anno1404Calculator.Models.ProductionBuildings;
 using System;
 using System.Buffers.Binary;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 public class AnnoApi
@@ -35,7 +37,6 @@ public class AnnoApi
     static readonly uint Player2NoblemenOffset      = 0x7DDC;
     static readonly uint Player3NoblemenOffset      = 0x7DE0;
     static readonly uint Player4NoblemenOffset      = 0x7DE4;
-
 
     public AnnoStatus Read()
     {
@@ -84,37 +85,77 @@ public class AnnoApi
                 Noblemen = player1Noblemen,
                 Nomads = player1Nomads,
                 Envoys = player1Emmis,
-                Lumberjackshuts = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Lumberjackshut),
-                Indigoplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Indigoplantation),
-                Papermills = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Papermill),
-                Quartzquarries = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Quartzquarry),
-                Almondplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Almondplantation),
-                Cattlefarms = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Cattlefarm),
-                Apiaries = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Apiary),
-                Candlemakersworkshops = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Candlemakersworkshop),
-                Coalmines = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Coalmine),
-                Coffeeplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Coffeeplantation),
-                Coppermines = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Coppermine),
-                Coppersmelters = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Coppersmelter),
-                Cropfarms = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Cropfarm),
-                // Goldsmelters = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Goldsmelter),
-                Hempplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Hempplantation),
-                Mills = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Mill),
-                Monasterygardens = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Monasterygarden),
-                Pigfarms = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Pigfarm),
-                Rosenurseries = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Rosenursery),
-                Saltmines = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Saltmine),
-                Saltworks = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Saltworks),
-                Silkplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Silkplantation),
-                Sugarcaneplantations = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Sugarcaneplantation),
-                Sugarmills = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Sugarmill),
-                Trapperslodges = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Trapperslodge),
-                Barrelcooperage = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Barrelcooperage),
-                // Goldmines = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Goldmine),
-                Ironmine = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Ironmine),
-                Ironsmelter = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Ironsmelter),
-                Pearlfishershut = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Pearlfishershut),
-                Vineyards = ReadBuildingCount(handle, Anno1404IntermediateBuilding.Vineyard),
+                ProductionBuildings = new Dictionary<Type, IProductionBuilding>()
+                {
+                    { typeof(Fishermanshut), new Hempplantation(ReadBuildingCount(handle, ProductionBuildingEnum.Fishermanshut)) },
+                    { typeof(Bakery), new Bakery(ReadBuildingCount(handle, ProductionBuildingEnum.Bakery)) },
+                    { typeof(Mill), new Mill(ReadBuildingCount(handle, ProductionBuildingEnum.Mill)) },
+                    { typeof(Cropfarm), new Cropfarm(ReadBuildingCount(handle, ProductionBuildingEnum.Cropfarm)) },
+                    { typeof(Hempplantation), new Hempplantation(ReadBuildingCount(handle, ProductionBuildingEnum.Hempplantation)) },
+                    { typeof(Weavershut), new Weavershut(ReadBuildingCount(handle, ProductionBuildingEnum.Weavershut)) }
+                },
+                // Intermediate buildings
+                Lumberjackshuts = ReadBuildingCount(handle, ProductionBuildingEnum.Lumberjackshut),
+                Indigoplantations = ReadBuildingCount(handle, ProductionBuildingEnum.Indigofarm),
+                Papermills = ReadBuildingCount(handle, ProductionBuildingEnum.Papermill),
+                Quartzquarries = ReadBuildingCount(handle, ProductionBuildingEnum.Quartzquarry),
+                Almondplantations = ReadBuildingCount(handle, ProductionBuildingEnum.Almondplantation),
+                Cattlefarms = ReadBuildingCount(handle, ProductionBuildingEnum.Cattlefarm),
+                Apiaries = ReadBuildingCount(handle, ProductionBuildingEnum.Apiary),
+                Candlemakersworkshops = ReadBuildingCount(handle, ProductionBuildingEnum.Candlemakersworkshop),
+                Coalmines = ReadBuildingCount(handle, ProductionBuildingEnum.Coalmine),
+                Coffeeplantations = ReadBuildingCount(handle, ProductionBuildingEnum.Coffeeplantation),
+                Coppermines = ReadBuildingCount(handle, ProductionBuildingEnum.Coppermine),
+                Coppersmelters = ReadBuildingCount(handle, ProductionBuildingEnum.Coppersmelter),
+                Cropfarms = ReadBuildingCount(handle, ProductionBuildingEnum.Cropfarm),
+                Goldsmelters = 0, // ReadBuildingCount(handle, Anno1404IntermediateBuilding.Goldsmelter),
+                Hempplantations = ReadBuildingCount(handle, ProductionBuildingEnum.Hempplantation),
+                Mills = ReadBuildingCount(handle, ProductionBuildingEnum.Mill),
+                Monasterygardens = ReadBuildingCount(handle, ProductionBuildingEnum.Monasterygarden),
+                Pigfarms = ReadBuildingCount(handle, ProductionBuildingEnum.Pigfarm),
+                Rosenurseries = ReadBuildingCount(handle, ProductionBuildingEnum.Rosenursery),
+                Saltmines = ReadBuildingCount(handle, ProductionBuildingEnum.Saltmine),
+                Saltworks = ReadBuildingCount(handle, ProductionBuildingEnum.Saltworks),
+                Silkplantations = ReadBuildingCount(handle, ProductionBuildingEnum.Silkplantation),
+                Sugarcaneplantations = ReadBuildingCount(handle, ProductionBuildingEnum.Sugarcaneplantation),
+                Sugarmills = ReadBuildingCount(handle, ProductionBuildingEnum.Sugarmill),
+                Trapperslodges = ReadBuildingCount(handle, ProductionBuildingEnum.Trapperslodge),
+                Barrelcooperage = ReadBuildingCount(handle, ProductionBuildingEnum.Barrelcooperage),
+                Goldmines = 0, // ReadBuildingCount(handle, Anno1404IntermediateBuilding.Goldmine),
+                Ironmine = ReadBuildingCount(handle, ProductionBuildingEnum.Ironmine),
+                Ironsmelter = ReadBuildingCount(handle, ProductionBuildingEnum.Ironsmelter),
+                Pearlfishershut = ReadBuildingCount(handle, ProductionBuildingEnum.Pearlfishershut),
+                Vineyards = ReadBuildingCount(handle, ProductionBuildingEnum.Vineyard),
+                Claypits = ReadBuildingCount(handle, ProductionBuildingEnum.Claypit),
+                // Final buildings
+                Bakeries = ReadBuildingCount(handle, ProductionBuildingEnum.Bakery),
+                Butchersshops = ReadBuildingCount(handle, ProductionBuildingEnum.Butchersshop),
+                Carpetworkshops = ReadBuildingCount(handle, ProductionBuildingEnum.Carpetworkshop),
+                Ciderfarms = ReadBuildingCount(handle, ProductionBuildingEnum.Ciderfarm),
+                Confectionersworkshops = ReadBuildingCount(handle, ProductionBuildingEnum.Confectionersworkshop),
+                Dateplantations = ReadBuildingCount(handle, ProductionBuildingEnum.Dateplantation),
+                Fishermanshuts = ReadBuildingCount(handle, ProductionBuildingEnum.Fishermanshut),
+                Furriersworkshops = ReadBuildingCount(handle, ProductionBuildingEnum.Furriersworkshop),
+                Goatfarms = ReadBuildingCount(handle, ProductionBuildingEnum.Goatfarm),
+                Monasterybreweries = ReadBuildingCount(handle, ProductionBuildingEnum.Monasterybrewery),
+                Opticiansworkshops = ReadBuildingCount(handle, ProductionBuildingEnum.Opticiansworkshop),
+                Perfumeries = ReadBuildingCount(handle, ProductionBuildingEnum.Perfumery),
+                Perlworkshops = ReadBuildingCount(handle, ProductionBuildingEnum.Pearlworkshop),
+                Printinghouses = ReadBuildingCount(handle, ProductionBuildingEnum.Printinghouse),
+                Redsmithsworkshops = ReadBuildingCount(handle, ProductionBuildingEnum.Redsmithsworkshop),
+                Roastinghouses = ReadBuildingCount(handle, ProductionBuildingEnum.Roastinghouse),
+                Tanneries = ReadBuildingCount(handle, ProductionBuildingEnum.Tannery),
+                Winepresses = ReadBuildingCount(handle, ProductionBuildingEnum.Winepress),
+                Spicefarms = ReadBuildingCount(handle, ProductionBuildingEnum.Spicefarm),
+                Silkweavingmills = 0, // ReadBuildingCount(handle, Anno1404Building.Silkweavingmill),
+                // Misc buildings
+                Mosaicworkshops = ReadBuildingCount(handle, ProductionBuildingEnum.Mosaicworkshop),
+                Weaponsmithies = ReadBuildingCount(handle, ProductionBuildingEnum.Weaponsmithy),
+                Toolmakersworkshops = ReadBuildingCount(handle, ProductionBuildingEnum.Toolmakersworkshop),
+                Stonemasonshuts = ReadBuildingCount(handle, ProductionBuildingEnum.Stonemasonshut),
+                Cannonfoundries = ReadBuildingCount(handle, ProductionBuildingEnum.Cannonfoundry),
+                Ropeyards = ReadBuildingCount(handle, ProductionBuildingEnum.Ropeyard),
+                Warmachinesworkshops = ReadBuildingCount(handle, ProductionBuildingEnum.Warmachinesworkshop),
             },
             Player2 = new AnnoPlayerStatus()
             {
@@ -152,7 +193,7 @@ public class AnnoApi
         return status;
     }
 
-    private uint? ReadBuildingCount(Microsoft.Win32.SafeHandles.SafeFileHandle handle, Anno1404IntermediateBuilding building)
+    private uint ReadBuildingCount(Microsoft.Win32.SafeHandles.SafeFileHandle handle, ProductionBuildingEnum building)
     {
         uint buildingId = building.GetBuildingId();
         uint hugeTablePtr = ReadU32(handle, 0x012D92D8);
@@ -176,7 +217,7 @@ public class AnnoApi
             }
         }
 
-        return null;
+        return 0;
     }
 
     private unsafe uint ReadU32(Microsoft.Win32.SafeHandles.SafeFileHandle handle, uint address)

@@ -1,13 +1,15 @@
 ﻿namespace Anno1404Calculator.Views;
 
 using Anno1404Calculator.Models;
+using Anno1404Calculator.Models.ProductionBuildings;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using System;
 using System.Linq;
 
-public sealed partial class Product : UserControl
+public sealed partial class ProductionBuildingControl : UserControl
 {
     private const double RedThreshold = -2;
     private const double OrangeThreshold = -0.1;
@@ -15,21 +17,46 @@ public sealed partial class Product : UserControl
     private const double LightGreenThreshold = 1;
     public ProductIconConverter ProductIconConverter { get; set; } = new ProductIconConverter();
 
-    public Anno1404ProductType ProductType
+    public AnnoPlayerStatus PlayerStatus
     {
-        get { return (Anno1404ProductType)GetValue(ProductTypeProperty); }
-        set  { SetValue(ProductTypeProperty, value); }
+        get { return (AnnoPlayerStatus)GetValue(PlayerStatusProperty); }
+        set { SetValue(PlayerStatusProperty, value); }
     }
-    public static readonly DependencyProperty ProductTypeProperty =
-        DependencyProperty.Register("ProductType", typeof(Anno1404ProductType), typeof(Product), new PropertyMetadata(Anno1404ProductType.Beer));
+    public static readonly DependencyProperty PlayerStatusProperty =
+        DependencyProperty.Register("PlayerStatus", typeof(AnnoPlayerStatus), typeof(ProductionBuildingControl), new PropertyMetadata(new AnnoPlayerStatus()));
 
-    public double ProductConsumption
+    public ProductionBuildingEnum ProductionBuildingType
     {
-        get { return (double)GetValue(ProductConsumptionProperty); }
-        set { SetValue(ProductConsumptionProperty, value); UpdateEverything(); }
+        get { return (ProductionBuildingEnum)GetValue(BuildingTypeProperty); }
+        set { SetValue(BuildingTypeProperty, value); }
     }
-    public static readonly DependencyProperty ProductConsumptionProperty =
-        DependencyProperty.Register("ProductConsumption", typeof(double), typeof(Product), new PropertyMetadata(0.0));
+    public static readonly DependencyProperty BuildingTypeProperty =
+        DependencyProperty.Register("ProductionBuildingType", typeof(ProductionBuildingEnum), typeof(ProductionBuildingControl), new PropertyMetadata(ProductionBuildingEnum.Cropfarm));
+
+    public bool IsBuffable
+    {
+        get { return (bool)GetValue(IsBuffableProperty); }
+        set
+        {
+            SetValue(IsBuffableProperty, value);
+            if (value)
+            {
+                Buildings00.Visibility = Visibility.Visible;
+                Buildings25.Visibility = Visibility.Visible;
+                Buildings50.Visibility = Visibility.Visible;
+                Buildings75.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Buildings00.Visibility = Visibility.Collapsed;
+                Buildings25.Visibility = Visibility.Collapsed;
+                Buildings50.Visibility = Visibility.Collapsed;
+                Buildings75.Visibility = Visibility.Collapsed;
+            }
+        }
+    }
+    public static readonly DependencyProperty IsBuffableProperty =
+        DependencyProperty.Register("IsBuffable", typeof(bool), typeof(ProductionBuildingControl), new PropertyMetadata(false));
 
     public uint ProductProductions00
     {
@@ -37,7 +64,7 @@ public sealed partial class Product : UserControl
         set { SetValue(ProductProductions00Property, value); UpdateEverything(); }
     }
     public static readonly DependencyProperty ProductProductions00Property =
-        DependencyProperty.Register("ProductProductions00", typeof(uint), typeof(Product), new PropertyMetadata((uint)0));
+        DependencyProperty.Register("ProductProductions00", typeof(uint), typeof(ProductionBuildingControl), new PropertyMetadata((uint)0));
 
     public uint ProductProductions25
     {
@@ -45,7 +72,7 @@ public sealed partial class Product : UserControl
         set { SetValue(ProductProductions25Property, value); UpdateEverything(); }
     }
     public static readonly DependencyProperty ProductProductions25Property =
-        DependencyProperty.Register("ProductProductions25", typeof(uint), typeof(Product), new PropertyMetadata((uint)0));
+        DependencyProperty.Register("ProductProductions25", typeof(uint), typeof(ProductionBuildingControl), new PropertyMetadata((uint)0));
 
     public uint ProductProductions50
     {
@@ -53,7 +80,7 @@ public sealed partial class Product : UserControl
         set { SetValue(ProductProductions50Property, value);  UpdateEverything(); }
     }
     public static readonly DependencyProperty ProductProductions50Property =
-        DependencyProperty.Register("ProductProductions50", typeof(uint), typeof(Product), new PropertyMetadata((uint)0));
+        DependencyProperty.Register("ProductProductions50", typeof(uint), typeof(ProductionBuildingControl), new PropertyMetadata((uint)0));
 
     public uint ProductProductions75
     {
@@ -61,9 +88,14 @@ public sealed partial class Product : UserControl
         set { SetValue(ProductProductions75Property, value); UpdateEverything(); }
     }
     public static readonly DependencyProperty ProductProductions75Property =
-        DependencyProperty.Register("ProductProductions75", typeof(uint), typeof(Product), new PropertyMetadata((uint)0));
+        DependencyProperty.Register("ProductProductions75", typeof(uint), typeof(ProductionBuildingControl), new PropertyMetadata((uint)0));
 
-    public Product()
+    public uint BuildingCount => Building?.Count ?? 0;
+    public double Production => ProductProductions00 + ProductProductions25 * 1.25 + ProductProductions50 * 1.5 + ProductProductions75 * 1.75;
+    public double Consumption => Building.GetCitizenConsumption(PlayerStatus);
+    private IProductionBuilding Building => PlayerStatus?.ProductionBuildings[ProductionBuildingType.GetProductionBuildingType()];
+
+    public ProductionBuildingControl()
     {
         this.InitializeComponent();
     }
@@ -98,6 +130,9 @@ public sealed partial class Product : UserControl
 
     private void UpdateEverything()
     {
+        // We transform the production and consumption to multiples of the production capacity of an unbuffed building.
+        // This allows us to select colors based on the amount of required buildings.
+        /*
         double requiredUnbuffedProductionBuildings = ProductType.GetProductionsRequired(ProductConsumption);
         double currentUnbuffedProductionBuildings = (ProductProductions00 * 1.0) + (ProductProductions25 * 1.25) + (ProductProductions50 * 1.5) + (ProductProductions75 * 1.75);
         double surplusUnbuffedProductionBuildings = currentUnbuffedProductionBuildings - requiredUnbuffedProductionBuildings;
@@ -122,5 +157,7 @@ public sealed partial class Product : UserControl
             ProductionPanel.Background = new SolidColorBrush(Colors.Green);
         }
         ProductProduction.Text = string.Format("{0:0.00}", ProductType.GetProduction(currentUnbuffedProductionBuildings));
+
+        */
     }
 }

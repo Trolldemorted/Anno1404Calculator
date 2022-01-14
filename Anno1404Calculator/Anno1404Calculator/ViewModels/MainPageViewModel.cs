@@ -13,60 +13,7 @@ public class MainPageViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 
-    // Population
-    public uint Nomads { get; set; }
-    public uint Envoys { get; set; }
-    public uint Beggars { get; set; }
-    public uint Peasants { get; set; }
-    public uint Citizens { get; set; }
-    public uint Patricians { get; set; }
-    public uint Noblemen { get; set; }
-
-    // Consumption
-    public double FishConsumption { get; set; }
-    public double CiderConsumption { get; set; }
-    public double LinenGarmentsConsumption { get; set; }
-    public double SpicesConsumption { get; set; }
-    public double BreadConsumption { get; set; }
-    public double BeerConsumption { get; set; }
-    public double LeatherJerkinsConsumption { get; set; }
-    public double BooksConsumption { get; set; }
-    public double MeatConsumption { get; set; }
-    public double FurCoatsConsumption { get; set; }
-    public double WineConsumption { get; set; }
-    public double GlassesConsumption { get; set; }
-    public double CandlestickConsumption { get; set; }
-    public double BrocadeRobesConsumption { get; set; }
-    public double DatesConsumption { get; set; }
-    public double MilkConsumption { get; set; }
-    public double CarpetsConsumption { get; set; }
-    public double CoffeeConsumption { get; set; }
-    public double PearlNecklacesConsumption { get; set; }
-    public double PerfumeConsumption { get; set; }
-    public double MarzipanConsumption { get; set; }
-
-    // Required 1x production
-    public double FishProductionRequired { get; set; }
-    public double CiderProductionRequired { get; set; }
-    public double LinenGarmentsProductionRequired { get; set; }
-    public double SpicesProductionRequired { get; set; }
-    public double BreadProductionRequired { get; set; }
-    public double BeerProductionRequired { get; set; }
-    public double LeatherJerkinsProductionRequired { get; set; }
-    public double BooksProductionRequired { get; set; }
-    public double MeatProductionRequired { get; set; }
-    public double FurCoatsProductionRequired { get; set; }
-    public double WineProductionRequired { get; set; }
-    public double GlassesProductionRequired { get; set; }
-    public double CandlestickProductionRequired { get; set; }
-    public double BrocadeRobesProductionRequired { get; set; }
-    public double DatesProductionRequired { get; set; }
-    public double MilkProductionRequired { get; set; }
-    public double CarpetsProductionRequired { get; set; }
-    public double CoffeeProductionRequired { get; set; }
-    public double PearlNecklacesProductionRequired { get; set; }
-    public double PerfumeProductionRequired { get; set; }
-    public double MarzipanProductionRequired { get; set; }
+    public AnnoPlayerStatus PlayerStatus { get; set; }
 
     // Defined consumable production
     public uint FishProductions00 { get => _FishProductions00; set { _FishProductions00 = value; Store(Anno1404ProductType.Fish, "_00", value); } }
@@ -236,77 +183,7 @@ public class MainPageViewModel : INotifyPropertyChanged
     private uint _MarzipanProductions50 = Load(Anno1404ProductType.Marzipan, "_50");
     public uint MarzipanProductions75 { get => _MarzipanProductions75; set { _MarzipanProductions75 = value; Store(Anno1404ProductType.Marzipan, "_75", value); } }
     private uint _MarzipanProductions75 = Load(Anno1404ProductType.Marzipan, "_75");
-
-    // Required intermediate production
-    public double MillsRequired => BreadProductions00 + BreadProductions25 + BreadProductions50 + BreadProductions75;
-    public double MonasterygardensRequired => BeerProductions00 + BeerProductions25 + BeerProductions50 + BeerProductions75;
-    public double CropfarmsRequired => ((BeerProductions00 + BeerProductions25 + BeerProductions50 + BeerProductions75) +
-        (BreadProductions00 + BreadProductions25 + BreadProductions50 + BreadProductions75) * 2);
-    public double PigfarmsRequired => (LeatherJerkinsProductions00 + LeatherJerkinsProductions25 + LeatherJerkinsProductions50 + LeatherJerkinsProductions75) * 2.0;
-    public double PapermillsRequired => (BooksProductions00 + BooksProductions25 + BooksProductions50 + BooksProductions75) / 2.0;
-    public double CattlefarmsRequired => (MeatProductions00 + MeatProductions25 + MeatProductions50 + MeatProductions75) * 2;
-    public double SaltminesRequired => SaltworksRequired;
-    public double SaltworksRequired => TrapperslodgesRequired / 3.0 + CattlefarmsRequired / 2 + ((LeatherJerkinsProductions00 + LeatherJerkinsProductions25 + LeatherJerkinsProductions50 + LeatherJerkinsProductions75) / 2.0);
-    public double TrapperslodgesRequired => FurCoatsProductions00 + FurCoatsProductions25 + FurCoatsProductions50 + FurCoatsProductions75;
-    public double LumberjackshutsRequired => (BarrelcooperagesRequired * 4.0 / 6.0) + (PapermillsRequired * 2);
-    public double IronminesRequired => BarrelcooperagesRequired / 2.0;
-    public double IronsmeltersRequired => IronminesRequired;
-    public double VineyardsRequired => (WineProductions00 + WineProductions25 + WineProductions50 + WineProductions75) * 3;
-    public double BarrelcooperagesRequired => WineProductions00 + WineProductions25 + WineProductions50 + WineProductions75;
-    public double QuartzquarriesRequired => (GlassesProductions00 + GlassesProductions25 + GlassesProductions50 + GlassesProductions75) * 3.0 / 4.0;
-    public double HempfarmsRequired => CandlemakersWorkshopsRequired +
-        ((LinenGarmentsProductions00 + LinenGarmentsProductions25 + LinenGarmentsProductions50 + LinenGarmentsProductions75) * 2);
-    public double CoalminesRequired => (CoppersmeltersRequired / 3.0) + (GoldsmeltersRequired * 3.0 / 8.0) + (SaltworksRequired / 2);
-    public double CopperminesRequired => CoppersmeltersRequired;
-    public double ApiariesRequired => CandlemakersWorkshopsRequired * 2;
-    public double CoppersmeltersRequired => ((CandlestickProductions00 + CandlestickProductions25 + CandlestickProductions50 + CandlestickProductions75) * 3.0 / 4.0) +
-        ((GlassesProductions00 + GlassesProductions25 + GlassesProductions50 + GlassesProductions75) * 3.0 / 4.0);
-    public double CandlemakersWorkshopsRequired => (CandlestickProductions00 + CandlestickProductions25 + CandlestickProductions50 + CandlestickProductions75) * 6.0/4.0;
-    public double GoldsmeltersRequired => GoldminesRequired;
-    public double GoldminesRequired => BrocadeRobesProductions00 + BrocadeRobesProductions25 + BrocadeRobesProductions50 + BrocadeRobesProductions75;
-    public double SilkplantationsRequired => (CarpetsProductions00 + CarpetsProductions25 + CarpetsProductions50 + CarpetsProductions75) +
-        ((BrocadeRobesProductions00 + BrocadeRobesProductions25 + BrocadeRobesProductions50 + BrocadeRobesProductions75) * 2);
-    public double IndigofarmsRequired => (CarpetsProductions00 + CarpetsProductions25 + CarpetsProductions50 + CarpetsProductions75) +
-        ((BooksProductions00 + BooksProductions25 + BooksProductions50 + BooksProductions75) * 2);
-    public double CoffeeplantationsRequired => (CoffeeProductions00 + CoffeeProductions25 + CoffeeProductions50 + CoffeeProductions75) * 2;
-    public double PearlfishershutsRequired => PearlNecklacesProductions00 + PearlNecklacesProductions25 + PearlNecklacesProductions50 + PearlNecklacesProductions75;
-    public double RosenurseriesRequired => (PerfumeProductions00 + PerfumeProductions25 + PerfumeProductions50 + PerfumeProductions75) * 3;
-    public double SugarmillsRequired => MarzipanProductions00 + MarzipanProductions25 + MarzipanProductions50 + MarzipanProductions75;
-    public double SugarcaneplantationsRequired => SugarmillsRequired * 2;
-    public double AlmondplantationsRequired => (MarzipanProductions00 + MarzipanProductions25 + MarzipanProductions50 + MarzipanProductions75) * 2;
-
-    // current intermediate production
-    public int SugarcaneplantationsCurrent { get; set; }
-    public int SugarmillsCurrent { get; set; }
-    public int SilkplantationsCurrent { get; set; }
-    public int RosenurseriesCurrent { get; set; }
-    public int HempplantationsCurrent { get; set; }
-    public int GoldsmeltersCurrent { get; set; }
-    public int GoldminesCurrent { get; set; }
-    public int CoppersmeltersCurrent { get; set; }
-    public int CopperminesCurrent { get; set; }
-    public int CoffeeplantationsCurrent { get; set; }
-    public int CandlemakersworkshopsCurrent { get; set; }
-    public int ApiariesCurrent { get; set; }
-    public int AlmondplantationsCurrent { get; set; }
-    public int CropfarmsCurrent { get; set; }
-    public int MillsCurrent { get; set; }
-    public int MonasterygardensCurrent { get; set; }
-    public int CoalminesCurrent { get; set; }
-    public int SaltminesCurrent { get; set; }
-    public int SaltworksCurrent { get; set; }
-    public int PigfarmsCurrent { get; set; }
-    public int PapermillsCurrent { get; set; }
-    public int IndigoplantationsCurrent { get; set; }
-    public int LumberjackshutsCurrent { get; set; }
-    public int CattlefarmsCurrent { get; set; }
-    public int TrapperslodgesCurrent { get; set; }
-    public int VineyardsCurrent { get; set; }
-    public int BarrelcooperagesCurrent { get; set; }
-    public int QuartzquarriesCurrent { get; set; }
-    public int IronminesCurrent { get; set; }
-    public int IronsmeltersCurrent { get; set; }
-    public int PearlfishershutsCurrent { get; set; }
+    
 
     private static uint Load(Anno1404ProductType type, string suffix)
     {
@@ -321,114 +198,9 @@ public class MainPageViewModel : INotifyPropertyChanged
 
     public void UpdateAnnoStatus(AnnoPlayerStatus snapshot)
     {
-        // Population
-        Beggars = snapshot.Beggars;
-        Peasants = snapshot.Peasants;
-        Citizens = snapshot.Citizens;
-        Patricians = snapshot.Patricians;
-        Noblemen = snapshot.Noblemen;
-        Nomads = snapshot.Nomads;
-        Envoys = snapshot.Envoys;
+        this.PlayerStatus = snapshot;
 
-        // Consumption
-        // Occidental
-        FishConsumption = snapshot.Beggars * 0.007 + snapshot.Peasants * 0.01 + snapshot.Citizens * 0.004 + snapshot.Patricians * 0.0022 + snapshot.Noblemen * 0.0016;
-        FishProductionRequired = FishConsumption / 2;
-
-        CiderConsumption = snapshot.Beggars * 0.003 + snapshot.Peasants * 0.0044 + snapshot.Citizens * 0.0044 + snapshot.Patricians * 0.0023 + snapshot.Noblemen * 0.0013;
-        CiderProductionRequired = CiderConsumption / 1.5;
-            
-        LinenGarmentsConsumption = snapshot.Citizens * 0.0042 + snapshot.Patricians * 0.0019 + snapshot.Noblemen * 0.0008;
-        LinenGarmentsProductionRequired = LinenGarmentsConsumption / 2;
-
-        SpicesConsumption = snapshot.Citizens * 0.0044 + snapshot.Patricians * 0.0022 + snapshot.Noblemen * 0.0016;
-        SpicesProductionRequired = SpicesConsumption / 2;
-
-        BreadConsumption = snapshot.Patricians * 0.0055 + snapshot.Noblemen * 0.0039;
-        BreadProductionRequired = BreadConsumption / 4;
-
-        BeerConsumption = snapshot.Patricians * 0.0024 + snapshot.Noblemen * 0.0014;
-        BeerProductionRequired = BeerConsumption / 1.5;
-
-        LeatherJerkinsConsumption = snapshot.Patricians * 0.0028 + snapshot.Noblemen * 0.0016;
-        LeatherJerkinsProductionRequired = LeatherJerkinsConsumption / 4;
-
-        BooksConsumption = snapshot.Patricians * 0.0016 + snapshot.Noblemen * 0.0009;
-        BooksProductionRequired = BooksConsumption / 3;
-
-        MeatConsumption = snapshot.Noblemen * 0.0022;
-        MeatProductionRequired = MeatConsumption / 2.5;
-
-        FurCoatsConsumption = snapshot.Noblemen * 0.0016;
-        FurCoatsProductionRequired = FurCoatsConsumption / 2.5;
-
-        WineConsumption = snapshot.Noblemen * 0.002;
-        WineProductionRequired = WineConsumption / 2;
-
-        GlassesConsumption = snapshot.Noblemen * 0.00117;
-        GlassesProductionRequired = GlassesConsumption / 2;
-
-        CandlestickConsumption = snapshot.Patricians * 0.0008 + snapshot.Noblemen * 0.0006;
-        CandlestickProductionRequired = CandlestickConsumption / 2;
-
-        BrocadeRobesConsumption = snapshot.Noblemen * 0.00142;
-        BrocadeRobesProductionRequired = BrocadeRobesConsumption / 3;
-
-        // Oriental
-        DatesConsumption = snapshot.Nomads * 0.00666 + snapshot.Envoys * 0.005;
-        DatesProductionRequired = DatesConsumption / 3;
-
-        MilkConsumption = snapshot.Nomads * 0.00344 + snapshot.Envoys * 0.00225;
-        MilkProductionRequired = MilkConsumption / 1.5;
-
-        CarpetsConsumption = snapshot.Nomads * 0.00165 + snapshot.Envoys * 0.001;
-        CarpetsProductionRequired = CarpetsConsumption / 1.5;
-
-        CoffeeConsumption = snapshot.Envoys * 0.001;
-        CoffeeProductionRequired = CoffeeConsumption / 1;
-
-        PearlNecklacesConsumption = snapshot.Envoys * 0.00133;
-        PearlNecklacesProductionRequired = PearlNecklacesConsumption / 1;
-
-        PerfumeConsumption = snapshot.Envoys * 0.0008;
-        PerfumeProductionRequired = PerfumeConsumption / 1;
-
-        MarzipanConsumption = snapshot.Envoys * 0.00163;
-        MarzipanProductionRequired = MarzipanConsumption / 4;
-
-        // Current intermediate production
-        SugarcaneplantationsCurrent = (int)(snapshot.Sugarcaneplantations ?? 0);
-        SugarmillsCurrent = (int)(snapshot.Sugarmills ?? 0);
-        SilkplantationsCurrent = (int)(snapshot.Silkplantations ?? 0);
-        RosenurseriesCurrent = (int)(snapshot.Rosenurseries ?? 0);
-        HempplantationsCurrent = (int)(snapshot.Hempplantations ?? 0);
-        GoldsmeltersCurrent = (int)(snapshot.Goldsmelters ?? 0);
-        GoldminesCurrent = (int)(snapshot.Goldmines ?? 0);
-        CoppersmeltersCurrent = (int)(snapshot.Coppersmelters ?? 0);
-        CopperminesCurrent = (int)(snapshot.Coppermines ?? 0);
-        CoffeeplantationsCurrent = (int)(snapshot.Coffeeplantations ?? 0);
-        CandlemakersworkshopsCurrent = (int)(snapshot.Candlemakersworkshops ?? 0);
-        ApiariesCurrent = (int)(snapshot.Apiaries ?? 0);
-        AlmondplantationsCurrent = (int)(snapshot.Almondplantations ?? 0);
-        CropfarmsCurrent = (int)(snapshot.Cropfarms ?? 0);
-        MillsCurrent = (int)(snapshot.Mills ?? 0);
-        MonasterygardensCurrent = (int)(snapshot.Monasterygardens ?? 0);
-        CoalminesCurrent = (int)(snapshot.Coalmines ?? 0);
-        SaltminesCurrent = (int)(snapshot.Saltmines ?? 0);
-        SaltworksCurrent = (int)(snapshot.Saltworks ?? 0);
-        PigfarmsCurrent = (int)(snapshot.Pigfarms ?? 0);
-        PapermillsCurrent = (int)(snapshot.Papermills ?? 0);
-        IndigoplantationsCurrent = (int)(snapshot.Indigoplantations ?? 0);
-        LumberjackshutsCurrent = (int)(snapshot.Lumberjackshuts ?? 0);
-        CattlefarmsCurrent = (int)(snapshot.Cattlefarms ?? 0);
-        TrapperslodgesCurrent = (int)(snapshot.Trapperslodges ?? 0);
-        VineyardsCurrent = (int)(snapshot.Vineyards ?? 0);
-        BarrelcooperagesCurrent = (int)(snapshot.Barrelcooperage ?? 0);
-        QuartzquarriesCurrent = (int)(snapshot.Quartzquarries ?? 0);
-        IronminesCurrent = (int)(snapshot.Ironmine ?? 0);
-        IronsmeltersCurrent = (int)(snapshot.Ironsmelter ?? 0);
-        PearlfishershutsCurrent = (int)(snapshot.Pearlfishershut ?? 0);
-
+        // Redraw everything
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
     }
 }

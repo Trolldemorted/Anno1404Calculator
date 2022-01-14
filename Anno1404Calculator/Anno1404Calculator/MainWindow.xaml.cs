@@ -27,7 +27,7 @@ public sealed partial class MainWindow : Window
             try
             {
                 var annoStatus = this.annoApi.Read();
-                this.DispatcherQueue.TryEnqueue(() =>
+                this.DispatcherQueue?.TryEnqueue(() =>
                 {
                     if (PlayerSelectionComboBox.SelectedValue as string == "Player 1")
                     {
