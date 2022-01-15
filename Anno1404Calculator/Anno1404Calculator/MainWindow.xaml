@@ -168,6 +168,7 @@
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Quartzquarry" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Coppermine" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Coppersmelter" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Apiary" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Goldmine" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Goldsmelter" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Indigofarm" />

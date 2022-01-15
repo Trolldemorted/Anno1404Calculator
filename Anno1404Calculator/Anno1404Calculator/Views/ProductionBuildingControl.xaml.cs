@@ -128,24 +128,24 @@ public sealed partial class ProductionBuildingControl : UserControl
         if (PlayerStatus != null)
         {
             uint totalBuildings = PlayerStatus.GetBuildingCount(ProductionBuildingType);
-            double production = ProductionBuildingType.GetProductionPerMinute(PlayerStatus, totalBuildings, ProductProductions00, ProductProductions25, ProductProductions50, ProductProductions75);
+            double production = ProductionBuildingType.GetPlayerProductionPerMinute(PlayerStatus, totalBuildings, ProductProductions00, ProductProductions25, ProductProductions50, ProductProductions75);
             double consumption = ProductionBuildingType.GetConsumptionPerMinute(PlayerStatus);
             double surplus = production - consumption;
-            double surpluseUnbuffedBuildings = surplus / ProductionBuildingType.GetProductionPerMinuteFactor();
+            double surplusUnbuffedBuildings = surplus / ProductionBuildingType.GetProductionPerMinute();
 
-            if (surpluseUnbuffedBuildings <= RedThreshold)
+            if (surplusUnbuffedBuildings <= RedThreshold)
             {
                 ProductionTextBlockGrid.Background = new SolidColorBrush(Colors.Red);
             }
-            else if (surpluseUnbuffedBuildings <= OrangeThreshold)
+            else if (surplusUnbuffedBuildings <= OrangeThreshold)
             {
                 ProductionTextBlockGrid.Background = new SolidColorBrush(Colors.Orange);
             }
-            else if (surpluseUnbuffedBuildings <= YellowThreshold)
+            else if (surplusUnbuffedBuildings <= YellowThreshold)
             {
                 ProductionTextBlockGrid.Background = new SolidColorBrush(Colors.Yellow);
             }
-            else if (surpluseUnbuffedBuildings <= LightGreenThreshold)
+            else if (surplusUnbuffedBuildings <= LightGreenThreshold)
             {
                 ProductionTextBlockGrid.Background = new SolidColorBrush(Colors.LightGreen);
             }

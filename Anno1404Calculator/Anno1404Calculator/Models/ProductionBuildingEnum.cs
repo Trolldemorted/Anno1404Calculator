@@ -145,85 +145,88 @@ public static class Anno1404IntermediateBuildingExtensions
             _ => throw new NotImplementedException(),
         };
 
-    public static double GetProductionPerMinuteFactor(this ProductionBuildingEnum pt) =>
-        pt switch
+    // Every building procudes 1 ton per cycle, therefore the production is 60/cycletime.
+    public static double GetProductionPerMinute(this ProductionBuildingEnum pb) => 60.0 / pb.GetProductionTimeInSeconds();
+
+    private static uint GetProductionTimeInSeconds(this ProductionBuildingEnum pb) =>
+        pb switch
         {
-            ProductionBuildingEnum.Monasterybrewery => 1.5,
-            ProductionBuildingEnum.Printinghouse => 3.0,
-            ProductionBuildingEnum.Bakery => 4.0,
-            ProductionBuildingEnum.Silkweavingmill => 3.0,
-            ProductionBuildingEnum.Redsmithsworkshop => 2.0,
-            ProductionBuildingEnum.Carpetworkshop => 1.5,
-            ProductionBuildingEnum.Ciderfarm => 1.5,
-            ProductionBuildingEnum.Roastinghouse => 1.0,
-            ProductionBuildingEnum.Dateplantation => 3.0,
-            ProductionBuildingEnum.Fishermanshut => 2.0,
-            ProductionBuildingEnum.Furriersworkshop => 2.5,
-            ProductionBuildingEnum.Opticiansworkshop => 2.0,
-            ProductionBuildingEnum.Tannery => 4.0,
-            ProductionBuildingEnum.Weavershut => 2.0,
-            ProductionBuildingEnum.Confectionersworkshop => 4.0,
-            ProductionBuildingEnum.Butchersshop => 2.5,
-            ProductionBuildingEnum.Goatfarm => 1.5,
-            ProductionBuildingEnum.Pearlworkshop => 1.0,
-            ProductionBuildingEnum.Perfumery => 1.0,
-            ProductionBuildingEnum.Spicefarm => 2.0,
-            ProductionBuildingEnum.Winepress => 2.0,
-            ProductionBuildingEnum.Sugarcaneplantation => 2.0,
-            ProductionBuildingEnum.Sugarmill => 4.0,
-            ProductionBuildingEnum.Silkplantation => 1.5,
-            ProductionBuildingEnum.Rosenursery => 0.5,
-            ProductionBuildingEnum.Hempplantation => 1.0,
-            ProductionBuildingEnum.Goldsmelter => 1.5,
-            ProductionBuildingEnum.Goldmine => 1.33,
-            ProductionBuildingEnum.Coppersmelter => 1.333333,
-            ProductionBuildingEnum.Coppermine => 1.333333,
-            ProductionBuildingEnum.Coffeeplantation => 1.0,
-            ProductionBuildingEnum.Candlemakersworkshop => 1.333333,
-            ProductionBuildingEnum.Apiary => 0.67,
-            ProductionBuildingEnum.Almondplantation => 2.0,
-            ProductionBuildingEnum.Cropfarm => 2.0,
-            ProductionBuildingEnum.Mill => 4.0,
-            ProductionBuildingEnum.Monasterygarden => 1.5,
-            ProductionBuildingEnum.Coalmine => 4.0,
-            ProductionBuildingEnum.Saltmine => 4.0,
-            ProductionBuildingEnum.Saltworks => 4.0,
-            ProductionBuildingEnum.Pigfarm => 2.0,
-            ProductionBuildingEnum.Papermill => 3.0,
-            ProductionBuildingEnum.Indigofarm => 1.5,
-            ProductionBuildingEnum.Lumberjackshut => 1.5,
-            ProductionBuildingEnum.Cattlefarm => 1.25,
-            ProductionBuildingEnum.Trapperslodge => 2.5,
-            ProductionBuildingEnum.Vineyard => 0.666666,
-            ProductionBuildingEnum.Barrelcooperage => 2.0,
-            ProductionBuildingEnum.Claypit => 1.2,
-            ProductionBuildingEnum.Quartzquarry => 1.33,
-            ProductionBuildingEnum.Ironmine => 2.0,
-            ProductionBuildingEnum.Ironsmelter => 2.0,
-            ProductionBuildingEnum.Pearlfishershut => 1.0,
-            ProductionBuildingEnum.Charcoalburnershut => 2.0,
-            ProductionBuildingEnum.Forestglassworks => 2.0,
-            ProductionBuildingEnum.Toolmakersworkshop => 2.0,
-            ProductionBuildingEnum.Stonemasonshut => 2.0,
-            ProductionBuildingEnum.Ropeyard => 2.0,
-            ProductionBuildingEnum.Weaponsmithy => 2.0,
-            ProductionBuildingEnum.Mosaicworkshop => 2.4,
-            ProductionBuildingEnum.Warmachinesworkshop => 1.5,
-            ProductionBuildingEnum.Cannonfoundry => 1.0,
-            ProductionBuildingEnum.Glasssmelter => 2.0,
-            _ => throw new NotImplementedException()
+            ProductionBuildingEnum.Sugarcaneplantation => 30,
+            ProductionBuildingEnum.Sugarmill => 15,
+            ProductionBuildingEnum.Silkplantation => 40,
+            ProductionBuildingEnum.Rosenursery => 120,
+            ProductionBuildingEnum.Hempplantation => 60,
+            ProductionBuildingEnum.Goldsmelter => 40,
+            ProductionBuildingEnum.Goldmine => 40,
+            ProductionBuildingEnum.Coppersmelter => 45,
+            ProductionBuildingEnum.Coppermine => 45,
+            ProductionBuildingEnum.Coffeeplantation => 60,
+            ProductionBuildingEnum.Candlemakersworkshop => 45,
+            ProductionBuildingEnum.Apiary => 90,
+            ProductionBuildingEnum.Almondplantation => 30,
+            ProductionBuildingEnum.Cropfarm => 30,
+            ProductionBuildingEnum.Mill => 15,
+            ProductionBuildingEnum.Monasterygarden => 30,
+            ProductionBuildingEnum.Coalmine => 15,
+            ProductionBuildingEnum.Saltmine => 15,
+            ProductionBuildingEnum.Saltworks => 15,
+            ProductionBuildingEnum.Pigfarm => 30,
+            ProductionBuildingEnum.Papermill => 20,
+            ProductionBuildingEnum.Indigofarm => 40,
+            ProductionBuildingEnum.Lumberjackshut => 40,
+            ProductionBuildingEnum.Cattlefarm => 48,
+            ProductionBuildingEnum.Trapperslodge => 24,
+            ProductionBuildingEnum.Vineyard => 90,
+            ProductionBuildingEnum.Barrelcooperage => 30,
+            ProductionBuildingEnum.Claypit => 50,
+            ProductionBuildingEnum.Quartzquarry => 45,
+            ProductionBuildingEnum.Ironmine => 30,
+            ProductionBuildingEnum.Ironsmelter => 30,
+            ProductionBuildingEnum.Pearlfishershut => 60,
+            ProductionBuildingEnum.Fishermanshut => 30,
+            ProductionBuildingEnum.Ciderfarm => 40,
+            ProductionBuildingEnum.Weavershut => 30,
+            ProductionBuildingEnum.Bakery => 15,
+            ProductionBuildingEnum.Monasterybrewery => 40,
+            ProductionBuildingEnum.Tannery => 15,
+            ProductionBuildingEnum.Printinghouse => 20,
+            ProductionBuildingEnum.Butchersshop => 24,
+            ProductionBuildingEnum.Furriersworkshop => 24,
+            ProductionBuildingEnum.Winepress => 30,
+            ProductionBuildingEnum.Redsmithsworkshop => 30,
+            ProductionBuildingEnum.Opticiansworkshop => 30,
+            ProductionBuildingEnum.Confectionersworkshop => 15,
+            ProductionBuildingEnum.Perfumery => 60,
+            ProductionBuildingEnum.Pearlworkshop => 60,
+            ProductionBuildingEnum.Roastinghouse => 60,
+            ProductionBuildingEnum.Carpetworkshop => 40,
+            ProductionBuildingEnum.Dateplantation => 20,
+            ProductionBuildingEnum.Goatfarm => 40,
+            ProductionBuildingEnum.Silkweavingmill => 20,
+            ProductionBuildingEnum.Spicefarm => 30,
+            ProductionBuildingEnum.Charcoalburnershut => 30,
+            ProductionBuildingEnum.Forestglassworks => 30,
+            ProductionBuildingEnum.Toolmakersworkshop => 30,
+            ProductionBuildingEnum.Stonemasonshut => 30,
+            ProductionBuildingEnum.Ropeyard => 30,
+            ProductionBuildingEnum.Weaponsmithy => 30,
+            ProductionBuildingEnum.Mosaicworkshop => 25,
+            ProductionBuildingEnum.Warmachinesworkshop => 40,
+            ProductionBuildingEnum.Cannonfoundry => 60,
+            ProductionBuildingEnum.Glasssmelter => 60,
+            _ => throw new NotImplementedException(),
         };
 
-    public static double GetProductionPerMinute(this ProductionBuildingEnum pb, AnnoPlayerStatus status, uint totalBuildings, uint buildings00, uint buildings25, uint buildings50, uint buildings75)
+    public static double GetPlayerProductionPerMinute(this ProductionBuildingEnum pb, AnnoPlayerStatus status, uint totalBuildings, uint buildings00, uint buildings25, uint buildings50, uint buildings75)
     {
-        var production = (buildings00 + buildings25 * 1.25 + buildings50 * 1.5 + buildings75 * 1.75) * pb.GetProductionPerMinuteFactor();
+        var production = (buildings00 + buildings25 * 1.25 + buildings50 * 1.5 + buildings75 * 1.75) * pb.GetProductionPerMinute();
         if (totalBuildings > (buildings00 + buildings25 + buildings50 + buildings75))
         {
-            production += (totalBuildings - (buildings00 + buildings25 + buildings50 + buildings75)) * pb.GetProductionPerMinuteFactor();
+            production += (totalBuildings - (buildings00 + buildings25 + buildings50 + buildings75)) * pb.GetProductionPerMinute();
         }
         if (pb == ProductionBuildingEnum.Coalmine)
         {
-            production += status.Charcoalburnershuts * ProductionBuildingEnum.Charcoalburnershut.GetProductionPerMinuteFactor();
+            production += status.Charcoalburnershuts * ProductionBuildingEnum.Charcoalburnershut.GetProductionPerMinute();
         }
         return production;
     }
@@ -238,38 +241,66 @@ public static class Anno1404IntermediateBuildingExtensions
     public static double GetConsumptionPerMinute(this ProductionBuildingEnum pb, AnnoPlayerStatus status) =>
         pb switch
         {
-            ProductionBuildingEnum.Sugarcaneplantation => (status.Sugarmills * 2.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Sugarmill => (status.Confectionersworkshops * 1.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Silkplantation => (status.Carpetworkshops * 1.0 + status.Silkweavingmills * 2.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Rosenursery => (status.Perfumeries * 3.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Hempplantation => (status.Weavershuts * 2 + status.Ropeyards * 1 + status.Candlemakersworkshops * 1) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Goldsmelter => (status.Silkweavingmills * 1.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Goldmine => (status.Goldmines * 1.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Coppersmelter => (status.Redsmithsworkshops * 0.75 + status.Opticiansworkshops * 0.75) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Coppermine => (status.Coppersmelters * 1.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Coffeeplantation => (status.Roastinghouses * 2) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Candlemakersworkshop => (status.Redsmithsworkshops * 0.666666) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Apiary => (status.Candlemakersworkshops * 0.5) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Almondplantation => (status.Confectionersworkshops * 2.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Cropfarm => (status.Mills * 2 + status.Monasterybreweries * 1.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Mill => (status.Bakeries * 1) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Monasterygarden => (status.Monasterybreweries * 1) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Coalmine => (status.Coppersmelters * 0.333333 + status.Ironsmelters * 0.5 + status.Saltworks * 0.5 + status.Goldsmelters * 0.375) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Saltmine => (status.Saltworks * 1.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Saltworks => (status.Tanneries * 0.5 + status.Butchersshops * 0.5 + status.Furriersworkshops * 0.333333) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Pigfarm => (status.Tanneries * 2) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Papermill => (status.Printinghouses * 0.5) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Indigofarm => (status.Carpetworkshops * 1.0 + status.Printinghouses * 2) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Lumberjackshut => (status.Barrelcooperages * 1.0 + status.Warmachinesworkshops * 0.5) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Cattlefarm => (status.Butchersshops * 2.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Trapperslodge => (status.Furriersworkshops * 1.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Vineyard => (status.Winepresses * 3.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Barrelcooperage => (status.Winepresses * 1.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Claypit => (status.Mosaicworkshops * 2.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Quartzquarry => (status.Mosaicworkshops * 0.9 + status.Glasssmelters * 0.375) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Ironmine => (status.Ironsmelters * 1.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Ironsmelter => (status.Barrelcooperages * 0.5 + status.Toolmakersworkshops * 0.5 + status.Cannonfoundries * 0.75 + status.Weaponsmithies * 1.0) * pb.GetProductionPerMinuteFactor(),
-            ProductionBuildingEnum.Pearlfishershut => (status.Pearlworkshops * 1) * pb.GetProductionPerMinuteFactor(),
+            ProductionBuildingEnum.Sugarcaneplantation => status.Sugarmills * 1.0 * ProductionBuildingEnum.Sugarmill.GetProductionPerMinute(),
+            ProductionBuildingEnum.Sugarmill => status.Confectionersworkshops * 1.0 * ProductionBuildingEnum.Confectionersworkshop.GetProductionPerMinute(),
+            ProductionBuildingEnum.Silkplantation =>
+                status.Carpetworkshops * 1.0 * ProductionBuildingEnum.Carpetworkshop.GetProductionPerMinute() +
+                status.Silkweavingmills * 1.0 * ProductionBuildingEnum.Silkweavingmill.GetProductionPerMinute(),
+            ProductionBuildingEnum.Rosenursery => status.Perfumeries * 1.5 * ProductionBuildingEnum.Perfumery.GetProductionPerMinute(),
+            ProductionBuildingEnum.Hempplantation =>
+                status.Weavershuts * 1.0 * ProductionBuildingEnum.Weavershut.GetProductionPerMinute() +
+                status.Ropeyards * 0.5 * ProductionBuildingEnum.Ropeyard.GetProductionPerMinute() +
+                status.Warmachinesworkshops * 2.0 * ProductionBuildingEnum.Warmachinesworkshop.GetProductionPerMinute() +
+                status.Candlemakersworkshops * 0.75 * ProductionBuildingEnum.Candlemakersworkshop.GetProductionPerMinute(),
+            ProductionBuildingEnum.Goldsmelter => status.Silkweavingmills * 0.5 * ProductionBuildingEnum.Silkweavingmill.GetProductionPerMinute(),
+            ProductionBuildingEnum.Goldmine => status.Goldmines * 1.0 * ProductionBuildingEnum.Goldmine.GetProductionPerMinute(),
+            ProductionBuildingEnum.Coppersmelter =>
+                status.Redsmithsworkshops * 0.5 * ProductionBuildingEnum.Redsmithsworkshop.GetProductionPerMinute() +
+                status.Opticiansworkshops * 0.5 * ProductionBuildingEnum.Opticiansworkshop.GetProductionPerMinute(),
+            ProductionBuildingEnum.Coppermine => status.Coppersmelters * 1.0 * ProductionBuildingEnum.Coppersmelter.GetProductionPerMinute(),
+            ProductionBuildingEnum.Coffeeplantation => status.Roastinghouses * 2.0 * ProductionBuildingEnum.Roastinghouse.GetProductionPerMinute(),
+            ProductionBuildingEnum.Candlemakersworkshop => status.Redsmithsworkshops * 1.0 * ProductionBuildingEnum.Redsmithsworkshop.GetProductionPerMinute(),
+            ProductionBuildingEnum.Apiary => status.Candlemakersworkshops * 1.0 * ProductionBuildingEnum.Candlemakersworkshop.GetProductionPerMinute(),
+            ProductionBuildingEnum.Almondplantation => status.Confectionersworkshops * 1.0 * ProductionBuildingEnum.Confectionersworkshop.GetProductionPerMinute(),
+            ProductionBuildingEnum.Cropfarm =>
+                status.Mills * 1.0 * ProductionBuildingEnum.Mill.GetProductionPerMinute() +
+                status.Monasterybreweries * 1.333 * ProductionBuildingEnum.Monasterybrewery.GetProductionPerMinute(),
+            ProductionBuildingEnum.Mill => status.Bakeries * 1.0 * ProductionBuildingEnum.Bakery.GetProductionPerMinute(),
+            ProductionBuildingEnum.Monasterygarden => status.Monasterybreweries * 1.333 * ProductionBuildingEnum.Monasterybrewery.GetProductionPerMinute(),
+            ProductionBuildingEnum.Coalmine =>
+                status.Coppersmelters * 1.0 * ProductionBuildingEnum.Coppersmelter.GetProductionPerMinute() +
+                status.Ironsmelters * 1.0 * ProductionBuildingEnum.Ironsmelter.GetProductionPerMinute() +
+                status.Saltworks * 0.5 * ProductionBuildingEnum.Saltworks.GetProductionPerMinute() +
+                status.Goldsmelters * 1.0 * ProductionBuildingEnum.Goldsmelter.GetProductionPerMinute(),
+            ProductionBuildingEnum.Saltmine => status.Saltworks * 1.0 * ProductionBuildingEnum.Saltworks.GetProductionPerMinute(),
+            ProductionBuildingEnum.Saltworks =>
+                status.Tanneries * 0.5 * ProductionBuildingEnum.Tannery.GetProductionPerMinute() +
+                status.Butchersshops * 0.8 * ProductionBuildingEnum.Butchersshop.GetProductionPerMinute() +
+                status.Furriersworkshops * 0.53 * ProductionBuildingEnum.Furriersworkshop.GetProductionPerMinute(),
+            ProductionBuildingEnum.Pigfarm => status.Tanneries * 1.0 * ProductionBuildingEnum.Tannery.GetProductionPerMinute(),
+            ProductionBuildingEnum.Papermill => status.Printinghouses * 0.5 * ProductionBuildingEnum.Printinghouse.GetProductionPerMinute(),
+            ProductionBuildingEnum.Indigofarm =>
+                status.Carpetworkshops * 1.0 * ProductionBuildingEnum.Carpetworkshop.GetProductionPerMinute() +
+                status.Printinghouses * 1.0 * ProductionBuildingEnum.Printinghouse.GetProductionPerMinute(),
+            ProductionBuildingEnum.Lumberjackshut =>
+                status.Barrelcooperages * 0.5 * ProductionBuildingEnum.Barrelcooperage.GetProductionPerMinute() +
+                status.Warmachinesworkshops * 2.0 * ProductionBuildingEnum.Warmachinesworkshop.GetProductionPerMinute() +
+                status.Cannonfoundries * 3.0 * ProductionBuildingEnum.Cannonfoundry.GetProductionPerMinute(),
+            ProductionBuildingEnum.Cattlefarm => status.Butchersshops * 1.0 * ProductionBuildingEnum.Butchersshop.GetProductionPerMinute(),
+            ProductionBuildingEnum.Trapperslodge => status.Furriersworkshops * 1.0 * ProductionBuildingEnum.Furriersworkshop.GetProductionPerMinute(),
+            ProductionBuildingEnum.Vineyard => status.Winepresses * 1.0 * ProductionBuildingEnum.Winepress.GetProductionPerMinute(),
+            ProductionBuildingEnum.Barrelcooperage => status.Winepresses * 1.0 * ProductionBuildingEnum.Winepress.GetProductionPerMinute(),
+            ProductionBuildingEnum.Claypit => status.Mosaicworkshops * 1.0 * ProductionBuildingEnum.Mosaicworkshop.GetProductionPerMinute(),
+            ProductionBuildingEnum.Quartzquarry =>
+                status.Mosaicworkshops * 0.5 * ProductionBuildingEnum.Mosaicworkshop.GetProductionPerMinute() +
+                status.Glasssmelters * 0.5 * ProductionBuildingEnum.Glasssmelter.GetProductionPerMinute(),
+            ProductionBuildingEnum.Ironmine => status.Ironsmelters * 1.0 * ProductionBuildingEnum.Ironsmelter.GetProductionPerMinute(),
+            ProductionBuildingEnum.Ironsmelter =>
+                status.Barrelcooperages * 0.5 * ProductionBuildingEnum.Barrelcooperage.GetProductionPerMinute() +
+                status.Toolmakersworkshops * 0.5 * ProductionBuildingEnum.Toolmakersworkshop.GetProductionPerMinute() +
+                status.Cannonfoundries * 1.5 * ProductionBuildingEnum.Cannonfoundry.GetProductionPerMinute() +
+                status.Weaponsmithies * 1.0 * ProductionBuildingEnum.Weaponsmithy.GetProductionPerMinute(),
+            ProductionBuildingEnum.Pearlfishershut => status.Pearlworkshops * 1.0 * ProductionBuildingEnum.Pearlworkshop.GetProductionPerMinute(),
             ProductionBuildingEnum.Fishermanshut => status.Beggars * 0.007 + status.Peasants * 0.01 + status.Citizens * 0.004 + status.Patricians * 0.0022 + status.Noblemen * 0.0016,
             ProductionBuildingEnum.Ciderfarm => status.Beggars * 0.003 + status.Peasants * 0.0044 + status.Citizens * 0.0044 + status.Patricians * 0.0023 + status.Noblemen * 0.0013,
             ProductionBuildingEnum.Weavershut => status.Citizens * 0.0042 + status.Patricians * 0.0019 + status.Noblemen * 0.0008,
@@ -292,7 +323,7 @@ public static class Anno1404IntermediateBuildingExtensions
             ProductionBuildingEnum.Silkweavingmill => status.Noblemen * 0.00142,
             ProductionBuildingEnum.Spicefarm => status.Citizens * 0.0044 + status.Patricians * 0.0022 + status.Noblemen * 0.0016,
             ProductionBuildingEnum.Charcoalburnershut => throw new NotImplementedException(),
-            ProductionBuildingEnum.Forestglassworks => (status.Glasssmelters * 0.5) * pb.GetProductionPerMinuteFactor(),
+            ProductionBuildingEnum.Forestglassworks => status.Glasssmelters * 1.0 * ProductionBuildingEnum.Glasssmelter.GetProductionPerMinute(),
             ProductionBuildingEnum.Toolmakersworkshop => 0,
             ProductionBuildingEnum.Stonemasonshut => 0,
             ProductionBuildingEnum.Ropeyard => 0,
