@@ -173,6 +173,7 @@
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Goldsmelter" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Indigofarm" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Silkplantation" />
+                <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Claypit" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Coffeeplantation" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Pearlfishershut" />
                 <views:ProductionBuildingControl PlayerStatus="{x:Bind Model.PlayerStatus, Mode=OneWay}" ProductionBuildingType="Rosenursery" />
