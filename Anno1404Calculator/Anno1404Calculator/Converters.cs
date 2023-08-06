@@ -9,14 +9,9 @@ public class ProductIconConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {
-        if (value is Anno1404ProductType productType)
+        if (value is ProductionBuildingEnum intermediateProductType)
         {
-            var uri = new Uri("ms-appx:///Assets/" + Enum.GetName(typeof(Anno1404ProductType), productType) + ".png");
-            return new BitmapImage(uri);
-        }
-        if (value is Anno1404IntermediateBuilding intermediateProductType)
-        {
-            var uri = new Uri("ms-appx:///Assets/" + Enum.GetName(typeof(Anno1404IntermediateBuilding), intermediateProductType) + ".png");
+            var uri = new Uri("ms-appx:///Assets/BuildingIcons/" + Enum.GetName(typeof(ProductionBuildingEnum), intermediateProductType) + ".png");
             return new BitmapImage(uri);
         }
         throw new InvalidOperationException();

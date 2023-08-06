@@ -10,7 +10,7 @@ using Microsoft.UI.Xaml;
 /// </summary>
 public partial class App : Application
 {
-    private Window m_window;
+    private Window? m_window;
 
     /// <summary>
     /// Initializes the singleton application object.  This is the first line of authored code

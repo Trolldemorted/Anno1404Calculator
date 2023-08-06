@@ -10,6 +10,7 @@
     <UseWinUI>true</UseWinUI>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <Version>0.2.0</Version>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="TestWindow.xaml" />
@@ -30,5 +31,9 @@
     <Page Update="TestWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\BuildingIcons\" />
   </ItemGroup>
 </Project>
