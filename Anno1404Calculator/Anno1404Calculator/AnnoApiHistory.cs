@@ -1,89 +1,80 @@
 ﻿namespace Anno1404Calculator; 
 
 using Anno1404Calculator.Models;
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection.Metadata;
 
-public class AnnoApi
+public class AnnoApiHistoryEdition
 {
-    static readonly uint Player1BeggarsOffset       = 0x7CD8;
-    static readonly uint Player2BeggarsOffset       = 0x7CDC;
-    static readonly uint Player3BeggarsOffset       = 0x7CE0;
-    static readonly uint Player4BeggarsOffset       = 0x7CE4;
-    static readonly uint Player1NomadsOffset        = 0x7D18;
-    static readonly uint Player2NomadsOffset        = 0x7D1C;
-    static readonly uint Player3NomadsOffset        = 0x7D20;
-    static readonly uint Player4NomadsOffset        = 0x7D24;
-    static readonly uint Player1EmmisOffset         = 0x7D38;
-    static readonly uint Player2EmmisOffset         = 0x7D3C;
-    static readonly uint Player3EmmisOffset         = 0x7D40;
-    static readonly uint Player4EmmisOffset         = 0x7D44;
-    static readonly uint Player1PeasantsOffset      = 0x7D78;
-    static readonly uint Player2PeasantsOffset      = 0x7D7C;
-    static readonly uint Player3PeasantsOffset      = 0x7D80;
-    static readonly uint Player4PeasantsOffset      = 0x7D84;
-    static readonly uint Player1CitizensOffset      = 0x7D98;
-    static readonly uint Player2CitizensOffset      = 0x7D9C;
-    static readonly uint Player3CitizensOffset      = 0x7DA0;
-    static readonly uint Player4CitizensOffset      = 0x7DA4;
-    static readonly uint Player1PatriciansOffset    = 0x7DB8;
-    static readonly uint Player2PatriciansOffset    = 0x7DBC;
-    static readonly uint Player3PatriciansOffset    = 0x7DC0;
-    static readonly uint Player4PatriciansOffset    = 0x7DC4;
-    static readonly uint Player1NoblemenOffset      = 0x7DD8;
-    static readonly uint Player2NoblemenOffset      = 0x7DDC;
-    static readonly uint Player3NoblemenOffset      = 0x7DE0;
-    static readonly uint Player4NoblemenOffset      = 0x7DE4;
+    const ulong ModuleBase = 0x00007FF7C5100000;
+    const ulong Class2Offset = 0x2095470;
+
+    enum PopulationType
+    {
+        Beggars = 2,
+        Nomads = 4,
+        Envoys = 5,
+        Peasants = 7,
+        Citizens = 8,
+        Patricians = 9,
+        Noblemen = 10,
+    }
+
+    private uint ReadPopulation(SafeFileHandle handle, uint playerId, PopulationType populationType)
+    {
+        var class2Address = ReadU64(handle, ModuleBase + Class2Offset);
+        return ReadU32(handle, class2Address + 0xea04 + 4 * (playerId + 8 * (ulong)populationType));
+    }
 
     public AnnoStatus Read()
     {
         var anno = Process.GetProcessesByName("Anno1404Addon")[0];
         var handle = Windows.Win32.PInvoke.OpenProcess_SafeHandle(Windows.Win32.System.Threading.PROCESS_ACCESS_RIGHTS.PROCESS_VM_READ, false, (uint)anno.Id);
 
-        // inhabitants
-        var inhabitantsBase = ReadU32(handle, 0x012D5A90); // 0x400000 + 0xED5A90
-        var player1Beggars = ReadU32(handle, inhabitantsBase + Player1BeggarsOffset);
-        var player1Peasants = ReadU32(handle, inhabitantsBase + Player1PeasantsOffset);
-        var player1Citizens = ReadU32(handle, inhabitantsBase + Player1CitizensOffset);
-        var player1Patricians = ReadU32(handle, inhabitantsBase + Player1PatriciansOffset);
-        var player1Noblemen = ReadU32(handle, inhabitantsBase + Player1NoblemenOffset);
-        var player1Nomads = ReadU32(handle, inhabitantsBase + Player1NomadsOffset);
-        var player1Emmis = ReadU32(handle, inhabitantsBase + Player1EmmisOffset);
-        var player2Beggars = ReadU32(handle, inhabitantsBase + Player2BeggarsOffset);
-        var player2Peasants = ReadU32(handle, inhabitantsBase + Player2PeasantsOffset);
-        var player2Citizens = ReadU32(handle, inhabitantsBase + Player2CitizensOffset);
-        var player2Patricians = ReadU32(handle, inhabitantsBase + Player2PatriciansOffset);
-        var player2Noblemen = ReadU32(handle, inhabitantsBase + Player2NoblemenOffset);
-        var player2Nomads = ReadU32(handle, inhabitantsBase + Player2NomadsOffset);
-        var player2Emmis = ReadU32(handle, inhabitantsBase + Player2EmmisOffset);
-        var player3Beggars = ReadU32(handle, inhabitantsBase + Player3BeggarsOffset);
-        var player3Peasants = ReadU32(handle, inhabitantsBase + Player3PeasantsOffset);
-        var player3Citizens = ReadU32(handle, inhabitantsBase + Player3CitizensOffset);
-        var player3Patricians = ReadU32(handle, inhabitantsBase + Player3PatriciansOffset);
-        var player3Noblemen = ReadU32(handle, inhabitantsBase + Player3NoblemenOffset);
-        var player3Nomads = ReadU32(handle, inhabitantsBase + Player3NomadsOffset);
-        var player3Emmis = ReadU32(handle, inhabitantsBase + Player3EmmisOffset);
-        var player4Beggars = ReadU32(handle, inhabitantsBase + Player4BeggarsOffset);
-        var player4Peasants = ReadU32(handle, inhabitantsBase + Player4PeasantsOffset);
-        var player4Citizens = ReadU32(handle, inhabitantsBase + Player4CitizensOffset);
-        var player4Patricians = ReadU32(handle, inhabitantsBase + Player4PatriciansOffset);
-        var player4Noblemen = ReadU32(handle, inhabitantsBase + Player4NoblemenOffset);
-        var player4Nomads = ReadU32(handle, inhabitantsBase + Player4NomadsOffset);
-        var player4Emmis = ReadU32(handle, inhabitantsBase + Player4EmmisOffset);
+        var player0Beggars = ReadPopulation(handle, 0, PopulationType.Beggars);
+        var player0Peasants = ReadPopulation(handle, 0, PopulationType.Peasants);
+        var player0Citizens = ReadPopulation(handle, 0, PopulationType.Citizens);
+        var player0Patricians = ReadPopulation(handle, 0, PopulationType.Patricians);
+        var player0Noblemen = ReadPopulation(handle, 0, PopulationType.Noblemen);
+        var player0Nomads = ReadPopulation(handle, 0, PopulationType.Nomads);
+        var player0Envoys = ReadPopulation(handle, 0, PopulationType.Envoys);
+        var player1Beggars = ReadPopulation(handle, 1, PopulationType.Beggars);
+        var player1Peasants = ReadPopulation(handle, 1, PopulationType.Peasants);
+        var player1Citizens = ReadPopulation(handle, 1, PopulationType.Citizens);
+        var player1Patricians = ReadPopulation(handle, 1, PopulationType.Patricians);
+        var player1Noblemen = ReadPopulation(handle, 1, PopulationType.Noblemen);
+        var player1Nomads = ReadPopulation(handle, 1, PopulationType.Nomads);
+        var player1Envoys = ReadPopulation(handle, 1, PopulationType.Envoys);
+        var player2Beggars = ReadPopulation(handle, 2, PopulationType.Beggars);
+        var player2Peasants = ReadPopulation(handle, 2, PopulationType.Peasants);
+        var player2Citizens = ReadPopulation(handle, 2, PopulationType.Citizens);
+        var player2Patricians = ReadPopulation(handle, 2, PopulationType.Patricians);
+        var player2Noblemen = ReadPopulation(handle, 2, PopulationType.Noblemen);
+        var player2Nomads = ReadPopulation(handle, 2, PopulationType.Nomads);
+        var player2Envoys = ReadPopulation(handle, 2, PopulationType.Envoys);
+        var player3Beggars = ReadPopulation(handle, 3, PopulationType.Beggars);
+        var player3Peasants = ReadPopulation(handle, 3, PopulationType.Peasants);
+        var player3Citizens = ReadPopulation(handle, 3, PopulationType.Citizens);
+        var player3Patricians = ReadPopulation(handle, 3, PopulationType.Patricians);
+        var player3Noblemen = ReadPopulation(handle, 3, PopulationType.Noblemen);
+        var player3Nomads = ReadPopulation(handle, 3, PopulationType.Nomads);
+        var player3Envoys = ReadPopulation(handle, 3, PopulationType.Envoys);
 
         var status = new AnnoStatus
         {
             Player0 = new AnnoPlayerStatus()
             {
-                Beggars = player1Beggars,
-                Peasants = player1Peasants,
-                Patricians = player1Patricians,
-                Citizens = player1Citizens,
-                Noblemen = player1Noblemen,
-                Nomads = player1Nomads,
-                Envoys = player1Emmis,
+                Beggars = player0Beggars,
+                Peasants = player0Peasants,
+                Patricians = player0Patricians,
+                Citizens = player0Citizens,
+                Noblemen = player0Noblemen,
+                Nomads = player0Nomads,
+                Envoys = player0Envoys,
                 // Intermediate buildings
                 Lumberjackshuts = ReadBuildingCount(handle, 0, ProductionBuildingEnum.Lumberjackshut),
                 Indigofarms = ReadBuildingCount(handle, 0, ProductionBuildingEnum.Indigofarm),
@@ -153,13 +144,13 @@ public class AnnoApi
             },
             Player1 = new AnnoPlayerStatus()
             {
-                Beggars = player2Beggars,
-                Peasants = player2Peasants,
-                Patricians = player2Patricians,
-                Citizens = player2Citizens,
-                Noblemen = player2Noblemen,
-                Nomads = player2Nomads,
-                Envoys = player2Emmis,
+                Beggars = player1Beggars,
+                Peasants = player1Peasants,
+                Patricians = player1Patricians,
+                Citizens = player1Citizens,
+                Noblemen = player1Noblemen,
+                Nomads = player1Nomads,
+                Envoys = player1Envoys,
                 // Intermediate buildings
                 Lumberjackshuts = ReadBuildingCount(handle, 1, ProductionBuildingEnum.Lumberjackshut),
                 Indigofarms = ReadBuildingCount(handle, 1, ProductionBuildingEnum.Indigofarm),
@@ -229,13 +220,13 @@ public class AnnoApi
             },
             Player2 = new AnnoPlayerStatus()
             {
-                Beggars = player3Beggars,
-                Peasants = player3Peasants,
-                Patricians = player3Patricians,
-                Citizens = player3Citizens,
-                Noblemen = player3Noblemen,
-                Nomads = player3Nomads,
-                Envoys = player3Emmis,
+                Beggars = player2Beggars,
+                Peasants = player2Peasants,
+                Patricians = player2Patricians,
+                Citizens = player2Citizens,
+                Noblemen = player2Noblemen,
+                Nomads = player2Nomads,
+                Envoys = player2Envoys,
                 // Intermediate buildings
                 Lumberjackshuts = ReadBuildingCount(handle, 2, ProductionBuildingEnum.Lumberjackshut),
                 Indigofarms = ReadBuildingCount(handle, 2, ProductionBuildingEnum.Indigofarm),
@@ -305,13 +296,13 @@ public class AnnoApi
             },
             Player3 = new AnnoPlayerStatus()
             {
-                Beggars = player4Beggars,
-                Peasants = player4Peasants,
-                Patricians = player4Patricians,
-                Citizens = player4Citizens,
-                Noblemen = player4Noblemen,
-                Nomads = player4Nomads,
-                Envoys = player4Emmis,
+                Beggars = player3Beggars,
+                Peasants = player3Peasants,
+                Patricians = player3Patricians,
+                Citizens = player3Citizens,
+                Noblemen = player3Noblemen,
+                Nomads = player3Nomads,
+                Envoys = player3Envoys,
                 // Intermediate buildings
                 Lumberjackshuts = ReadBuildingCount(handle, 3, ProductionBuildingEnum.Lumberjackshut),
                 Indigofarms = ReadBuildingCount(handle, 3, ProductionBuildingEnum.Indigofarm),
@@ -387,6 +378,7 @@ public class AnnoApi
 
     private uint ReadBuildingCount(Microsoft.Win32.SafeHandles.SafeFileHandle handle, uint playerId, ProductionBuildingEnum building)
     {
+        return 0;
         uint buildingId = building.GetBuildingId();
         uint hugeTablePtr = ReadU32(handle, 0x012D92D8);
         uint firstPtr = hugeTablePtr + 0x79A4 + playerId * 0x18;
@@ -412,7 +404,7 @@ public class AnnoApi
         return 0;
     }
 
-    private unsafe uint ReadU32(Microsoft.Win32.SafeHandles.SafeFileHandle handle, uint address)
+    private unsafe uint ReadU32(SafeFileHandle handle, ulong address)
     {
         Span<byte> buffer = stackalloc byte[4];
         uint read = 0;
@@ -427,5 +419,22 @@ public class AnnoApi
         }
 
         return BinaryPrimitives.ReadUInt32LittleEndian(buffer);
+    }
+
+    private unsafe ulong ReadU64(SafeFileHandle handle, ulong address)
+    {
+        Span<byte> buffer = stackalloc byte[8];
+        uint read = 0;
+        fixed (byte* bufferPtr = buffer)
+        {
+            Windows.Win32.PInvoke.ReadProcessMemory(handle, (void*)address, bufferPtr, 8, (nuint*)&read);
+        }
+
+        if (read != 8)
+        {
+            // throw new InvalidOperationException();
+        }
+
+        return BinaryPrimitives.ReadUInt64LittleEndian(buffer);
     }
 }

@@ -12,7 +12,7 @@ public sealed partial class MainWindow : Window
 {
     public MainPageViewModel Model { get; set; } = new MainPageViewModel();
     public string Version { get; } = $"Anno 1404 Calculator v{Assembly.GetExecutingAssembly().GetName().Version}";
-    private readonly AnnoApi annoApi = new();
+    private readonly AnnoApiHistoryEdition annoApi = new();
 
     public MainWindow()
     {
@@ -29,7 +29,11 @@ public sealed partial class MainWindow : Window
                 var annoStatus = this.annoApi.Read();
                 this.DispatcherQueue?.TryEnqueue(() =>
                 {
-                    if (PlayerSelectionComboBox.SelectedValue as string == "Player 1")
+                    if (PlayerSelectionComboBox.SelectedValue as string == "Player 0")
+                    {
+                        Model.UpdateAnnoStatus(annoStatus.Player0);
+                    }
+                    else if (PlayerSelectionComboBox.SelectedValue as string == "Player 1")
                     {
                         Model.UpdateAnnoStatus(annoStatus.Player1);
                     }
@@ -40,10 +44,6 @@ public sealed partial class MainWindow : Window
                     else if (PlayerSelectionComboBox.SelectedValue as string == "Player 3")
                     {
                         Model.UpdateAnnoStatus(annoStatus.Player3);
-                    }
-                    else if (PlayerSelectionComboBox.SelectedValue as string == "Player 4")
-                    {
-                        Model.UpdateAnnoStatus(annoStatus.Player4);
                     }
                 });
             }
